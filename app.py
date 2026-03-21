@@ -520,6 +520,118 @@ DISCLAIMER = (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════
+# GRADIO THEME — override at theme level so Base() can't fight back
+# ═══════════════════════════════════════════════════════════════════════════
+THEME = gr.themes.Base(
+    primary_hue=gr.themes.Color(
+        c50="#e6faf5", c100="#b3f0e0", c200="#80e6cc",
+        c300="#4ddbb7", c400="#1ad1a3", c500="#00C9A7",
+        c600="#00a88c", c700="#008770", c800="#006655",
+        c900="#004539", c950="#002e26",
+    ),
+    secondary_hue=gr.themes.Color(
+        c50="#e6faf5", c100="#b3f0e0", c200="#80e6cc",
+        c300="#4ddbb7", c400="#1ad1a3", c500="#00C9A7",
+        c600="#00a88c", c700="#008770", c800="#006655",
+        c900="#004539", c950="#002e26",
+    ),
+    neutral_hue=gr.themes.Color(
+        c50="#e8f4f1", c100="#c0d8d0", c200="#98bcaf",
+        c300="#70a08e", c400="#48846d", c500="#30695a",
+        c600="#1e4a3f", c700="#153328", c800="#0d2119",
+        c900="#08140f", c950="#040d12",
+    ),
+    font=["DM Sans", "system-ui", "sans-serif"],
+    font_mono=["JetBrains Mono", "monospace"],
+).set(
+    # Page
+    body_background_fill="#040d12",
+    body_background_fill_dark="#040d12",
+    body_text_color="#e8f4f1",
+    body_text_color_dark="#e8f4f1",
+    body_text_color_subdued="rgba(232,244,241,0.5)",
+    body_text_color_subdued_dark="rgba(232,244,241,0.5)",
+
+    # Blocks / panels
+    background_fill_primary="#040d12",
+    background_fill_primary_dark="#040d12",
+    background_fill_secondary="#071a14",
+    background_fill_secondary_dark="#071a14",
+    block_background_fill="rgba(0,201,167,0.03)",
+    block_background_fill_dark="rgba(0,201,167,0.03)",
+    block_border_color="rgba(0,201,167,0.10)",
+    block_border_color_dark="rgba(0,201,167,0.10)",
+    block_label_text_color="rgba(232,244,241,0.6)",
+    block_label_text_color_dark="rgba(232,244,241,0.6)",
+    block_label_background_fill="transparent",
+    block_label_background_fill_dark="transparent",
+    block_label_border_color="transparent",
+    block_label_border_color_dark="transparent",
+    block_title_text_color="#e8f4f1",
+    block_title_text_color_dark="#e8f4f1",
+    block_radius="16px",
+    block_border_width="1px",
+
+    # Inputs
+    input_background_fill="rgba(0,0,0,0.3)",
+    input_background_fill_dark="rgba(0,0,0,0.3)",
+    input_border_color="rgba(0,201,167,0.15)",
+    input_border_color_dark="rgba(0,201,167,0.15)",
+    input_border_color_focus="rgba(0,201,167,0.4)",
+    input_border_color_focus_dark="rgba(0,201,167,0.4)",
+    input_placeholder_color="rgba(232,244,241,0.25)",
+    input_placeholder_color_dark="rgba(232,244,241,0.25)",
+    input_radius="10px",
+    input_shadow="none",
+    input_shadow_dark="none",
+    input_shadow_focus="0 0 0 3px rgba(0,201,167,0.08)",
+    input_shadow_focus_dark="0 0 0 3px rgba(0,201,167,0.08)",
+
+    # Buttons
+    button_primary_background_fill="transparent",
+    button_primary_background_fill_dark="transparent",
+    button_primary_background_fill_hover="rgba(0,201,167,0.12)",
+    button_primary_background_fill_hover_dark="rgba(0,201,167,0.12)",
+    button_primary_text_color="#00C9A7",
+    button_primary_text_color_dark="#00C9A7",
+    button_primary_text_color_hover="#00C9A7",
+    button_primary_text_color_hover_dark="#00C9A7",
+    button_primary_border_color="#00C9A7",
+    button_primary_border_color_dark="#00C9A7",
+    button_primary_border_color_hover="#00C9A7",
+    button_primary_border_color_hover_dark="#00C9A7",
+    button_border_width="1px",
+    button_shadow="none",
+    button_shadow_hover="0 0 24px rgba(0,201,167,0.15)",
+    button_shadow_active="none",
+    button_large_radius="12px",
+    button_large_padding="14px 28px",
+
+    button_secondary_background_fill="transparent",
+    button_secondary_background_fill_dark="transparent",
+    button_secondary_text_color="rgba(232,244,241,0.6)",
+    button_secondary_text_color_dark="rgba(232,244,241,0.6)",
+    button_secondary_border_color="rgba(0,201,167,0.15)",
+    button_secondary_border_color_dark="rgba(0,201,167,0.15)",
+
+    # Borders
+    border_color_primary="rgba(0,201,167,0.12)",
+    border_color_primary_dark="rgba(0,201,167,0.12)",
+    border_color_accent="rgba(0,201,167,0.20)",
+    border_color_accent_dark="rgba(0,201,167,0.20)",
+
+    # Shadows
+    shadow_drop="none",
+    shadow_drop_lg="none",
+    shadow_spread="0px",
+
+    # Blocks
+    block_padding="16px",
+    block_shadow="none",
+    block_shadow_dark="none",
+)
+
+# ═══════════════════════════════════════════════════════════════════════════
 # MAIN ANALYSIS
 # ═══════════════════════════════════════════════════════════════════════════
 
@@ -682,7 +794,7 @@ DEMO_BANNER_HTML = (
 # BUILD UI
 # ═══════════════════════════════════════════════════════════════════════════
 
-with gr.Blocks(theme=gr.themes.Base(), css=CUSTOM_CSS, title="CryptoComply") as demo:
+with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="CryptoComply") as demo:
 
     # ── HERO ──
     gr.HTML(HERO_HTML)
