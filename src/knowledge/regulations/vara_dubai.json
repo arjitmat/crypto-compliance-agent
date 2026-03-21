@@ -1,0 +1,222 @@
+[
+  {
+    "id": "vara-001",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "Dubai Law No. 4 of 2022, Article 2",
+    "category": "definition",
+    "title": "Definition of Virtual Assets Under VARA",
+    "content": "Under Dubai Law No. 4 of 2022, which established the Virtual Assets Regulatory Authority (VARA), a virtual asset is defined as a digital representation of value that can be digitally traded, transferred, or used as an exchange or payment tool, or for investment purposes, and includes virtual tokens. The definition excludes digital representations of fiat currencies, securities, and other financial assets already regulated under existing UAE federal legislation. VARA's jurisdiction applies within the Emirate of Dubai, excluding the Dubai International Financial Centre (DIFC) which has its own separate regulatory framework under the Dubai Financial Services Authority (DFSA). The law establishes VARA as an independent regulatory authority with legal personality, financial and administrative independence, and the mandate to regulate, supervise, and oversee virtual assets and related activities in Dubai. VARA has the power to grant licences, establish rules and regulations, conduct inspections, impose sanctions, and cooperate with domestic and international regulatory authorities. Dubai was among the first jurisdictions globally to establish a dedicated regulatory authority specifically for virtual assets, signalling the emirate's strategic ambition to become a global hub for the virtual asset industry.",
+    "effective_date": "2023-02-07",
+    "tags": ["virtual-asset", "definition", "VARA", "Dubai-Law-4", "jurisdiction", "DIFC-exclusion", "regulatory-authority"]
+  },
+  {
+    "id": "vara-002",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Virtual Assets and Related Activities Regulations 2023",
+    "category": "licensing",
+    "title": "Seven VARA Activity Licences — Overview",
+    "content": "VARA's regulatory framework establishes seven categories of Virtual Asset Service Provider (VASP) activities, each requiring a specific licence. Advisory Services: providing advice, recommendations, or guidance to clients regarding virtual assets including investment analysis. Broker-Dealer Services: acting as an intermediary in the purchase and sale of virtual assets on behalf of clients, or dealing in virtual assets on a proprietary basis. Custody Services: safeguarding, storing, and maintaining virtual assets and their associated private keys on behalf of clients. Exchange Services: operating a platform that facilitates the exchange of virtual assets for fiat currencies, other virtual assets, or any other form of consideration. Lending and Borrowing Services: providing lending or borrowing facilities involving virtual assets. Management and Investment Services: managing virtual asset portfolios or providing investment management services involving virtual assets. Transfer and Settlement Services: facilitating the transfer and settlement of virtual assets between parties. A VASP may hold licences for one or more activity categories. Each licence category carries specific regulatory requirements regarding capital, governance, risk management, and conduct of business. The licensing process involves a multi-stage assessment including an initial assessment, full application review, and post-licensing conditions.",
+    "effective_date": "2023-02-07",
+    "tags": ["VASP", "seven-activities", "advisory", "broker-dealer", "custody", "exchange", "lending", "management", "transfer"]
+  },
+  {
+    "id": "vara-003",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Licensing Rulebook, Chapter 3",
+    "category": "licensing",
+    "title": "Capital Adequacy Requirements by Licence Type",
+    "content": "VARA imposes minimum capital requirements on VASPs that vary by licence category and the scope of services provided. For Exchange Services, the minimum capital requirement is AED 15,000,000 (approximately USD 4.1 million), reflecting the higher risk profile associated with operating a trading platform. Broker-Dealer Services require minimum capital of AED 5,000,000 (approximately USD 1.36 million). Custody Services require minimum capital of AED 5,000,000 (approximately USD 1.36 million), reflecting the fiduciary obligations and operational risks associated with safeguarding client assets. Advisory Services require minimum capital of AED 500,000 (approximately USD 136,000), the lowest threshold given the limited risk to client assets. Lending and Borrowing Services require minimum capital of AED 5,000,000 (approximately USD 1.36 million). Management and Investment Services require minimum capital of AED 1,000,000 (approximately USD 272,000). Transfer and Settlement Services require minimum capital of AED 5,000,000 (approximately USD 1.36 million). VASPs holding multiple licences must maintain capital meeting the highest applicable requirement plus additional capital buffers determined by VARA based on the risk profile of the combined activities. Capital must be maintained in liquid assets acceptable to VARA and must be available at all times.",
+    "effective_date": "2023-02-07",
+    "tags": ["capital-requirements", "minimum-capital", "exchange", "broker-dealer", "custody", "advisory", "lending", "liquid-assets"]
+  },
+  {
+    "id": "vara-004",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA AML/CFT Rulebook, Chapter 2",
+    "category": "aml",
+    "title": "VARA AML/CFT Programme Requirements",
+    "content": "The VARA AML/CFT Rulebook requires all licensed VASPs to establish, implement, and maintain a comprehensive Anti-Money Laundering and Countering the Financing of Terrorism programme. The AML/CFT programme must include a risk-based approach to identifying, assessing, and managing ML/TF risks, with the VASP required to conduct and document a business-wide ML/TF risk assessment at least annually. Customer due diligence (CDD) must be performed before establishing a business relationship, before carrying out a transaction for an occasional customer, when there is suspicion of ML/TF, and when there are doubts about previously obtained identification data. CDD measures include identifying and verifying the customer's identity using reliable and independent sources, identifying the beneficial owner and taking reasonable measures to verify their identity, and understanding the nature and purpose of the business relationship. Enhanced due diligence (EDD) is required for higher-risk customers including politically exposed persons (PEPs), customers from high-risk jurisdictions, complex or unusual transactions, and correspondent VASP relationships. The VASP must appoint a Money Laundering Reporting Officer (MLRO) who is a senior person with adequate authority, independence, and resources. The VASP must maintain records for at least eight years after the termination of the business relationship. All personnel must receive AML/CFT training upon joining and at least annually thereafter.",
+    "effective_date": "2023-02-07",
+    "tags": ["AML", "CFT", "CDD", "EDD", "MLRO", "risk-assessment", "PEP", "record-keeping", "training"]
+  },
+  {
+    "id": "vara-005",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA AML/CFT Rulebook, Chapter 5",
+    "category": "aml",
+    "title": "UAE Travel Rule Implementation for Virtual Asset Transfers",
+    "content": "The VARA AML/CFT Rulebook implements the FATF Travel Rule for virtual asset transfers conducted by licensed VASPs in Dubai. VASPs must collect, verify, and transmit originator and beneficiary information for all virtual asset transfers regardless of amount, adopting a stricter approach than the FATF's recommended threshold of USD/EUR 1,000. For all transfers, the originating VASP must obtain and transmit the originator's full name, account number or unique transaction reference, and either the originator's address, national identity number, customer identification number, or date and place of birth. The beneficiary VASP's name and the beneficiary's name and account number must also be transmitted. The beneficiary VASP must verify the beneficiary's identity before making the virtual assets available. For transfers to or from unhosted wallets, the VASP must conduct a risk assessment and apply enhanced due diligence where appropriate, and must be able to demonstrate to VARA that it has assessed the risks and taken appropriate measures. VASPs must implement technical solutions (such as TRISA, OpenVASP, or Sygna Bridge) to facilitate Travel Rule compliance and must verify that counterparty VASPs are registered or licensed in their respective jurisdictions. Non-compliance with Travel Rule requirements is a serious regulatory infringement that can result in fines and licence revocation.",
+    "effective_date": "2023-02-07",
+    "tags": ["travel-rule", "FATF", "zero-threshold", "originator-information", "beneficiary-information", "unhosted-wallets", "technical-solutions"]
+  },
+  {
+    "id": "vara-006",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Marketing and Promotions Rulebook",
+    "category": "disclosure",
+    "title": "VARA Marketing and Promotions Requirements",
+    "content": "The VARA Marketing and Promotions Rulebook establishes comprehensive requirements for the advertising and marketing of virtual asset services in Dubai. All marketing communications must be fair, clear, and not misleading, and must not contain exaggerated or unsubstantiated claims about potential returns or the safety of virtual asset investments. Marketing materials must prominently display risk warnings informing potential customers that virtual assets are volatile, may result in partial or total loss of investment, and are not guaranteed by any government authority. VASPs must not use marketing practices that target vulnerable consumers or minors. All marketing materials must be pre-approved by the VASP's compliance function before dissemination. VASPs must not engage in unsolicited marketing (cold calling or unsolicited electronic communications) to potential retail customers. Influencer marketing is permitted but subject to strict requirements: the VASP must have a written agreement with the influencer, the influencer must clearly disclose the commercial relationship, and the VASP is responsible for ensuring that influencer content complies with VARA rules. Promotional offers, including airdrops, bonuses, and referral rewards, must be clearly described with all terms and conditions prominently displayed. VARA may order the immediate removal of any marketing material that fails to comply with these requirements.",
+    "effective_date": "2023-02-07",
+    "tags": ["marketing", "promotions", "risk-warnings", "influencer", "advertising", "compliance-approval", "unsolicited-marketing"]
+  },
+  {
+    "id": "vara-007",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Technology and Information Governance Rulebook",
+    "category": "licensing",
+    "title": "VARA Technology Governance Requirements",
+    "content": "The VARA Technology and Information Governance Rulebook establishes comprehensive requirements for the technology infrastructure, cybersecurity, and data governance practices of licensed VASPs. VASPs must establish a technology governance framework that is approved by the board of directors and that includes a clear technology strategy aligned with business objectives, defined roles and responsibilities for technology governance, policies and procedures for system development, change management, and incident response, and regular independent assessments of technology risk. Cybersecurity requirements include implementation of defence-in-depth security architecture, multi-factor authentication for all customer-facing systems and internal administrative access, encryption of customer data at rest (AES-256 or equivalent) and in transit (TLS 1.2 or higher), regular penetration testing (at least annually by an independent third party), vulnerability management with remediation timelines, and a 24/7 security operations capability for VASPs operating exchange or custody services. VASPs must implement business continuity and disaster recovery plans with recovery time objectives (RTO) not exceeding 4 hours and recovery point objectives (RPO) not exceeding 1 hour for critical systems. VASPs must notify VARA of any material technology incident within 4 hours of detection and provide a full incident report within 72 hours. Data governance requirements include compliance with UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data.",
+    "effective_date": "2023-02-07",
+    "tags": ["technology-governance", "cybersecurity", "encryption", "penetration-testing", "BCP", "disaster-recovery", "incident-notification", "data-protection"]
+  },
+  {
+    "id": "vara-008",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Custody Services Rulebook",
+    "category": "licensing",
+    "title": "VARA Custody Services Requirements",
+    "content": "The VARA Custody Services Rulebook establishes specific requirements for VASPs providing custody and safekeeping of virtual assets on behalf of clients. Custody VASPs must segregate client virtual assets from the VASP's proprietary assets at all times, with segregation enforced at both the on-chain level (separate wallet addresses) and the records level (separate books and records). Custody VASPs must implement a secure key management framework including generation of private keys in hardware security modules (HSMs) or equivalent secure environments, multi-signature or threshold signature schemes for asset movements, geographically distributed key storage with no single point of failure, and documented key ceremony procedures. Cold storage requirements mandate that a minimum of 80% of client virtual assets by value must be held in cold storage (offline, air-gapped systems) at all times. Insurance requirements mandate that custody VASPs obtain and maintain professional indemnity insurance and crime insurance covering theft, fraud, and operational errors, with coverage amounts proportionate to the value of client assets under custody. Custody VASPs must conduct regular proof-of-reserves attestations and make the results available to VARA. An independent annual audit of custody operations and controls must be conducted by a VARA-approved auditor.",
+    "effective_date": "2023-02-07",
+    "tags": ["custody", "segregation", "key-management", "HSM", "cold-storage", "insurance", "proof-of-reserves", "multi-signature"]
+  },
+  {
+    "id": "vara-009",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Exchange Services Rulebook",
+    "category": "licensing",
+    "title": "VARA Exchange Services Requirements",
+    "content": "The VARA Exchange Services Rulebook sets out requirements for VASPs operating virtual asset trading platforms in Dubai. Exchange VASPs must establish transparent and non-discriminatory rules governing access to the platform and the listing or delisting of virtual assets. Before listing a virtual asset, the exchange must conduct a thorough assessment including evaluation of the token's technology, team, legal status, regulatory compliance in relevant jurisdictions, and potential risks to customers. The exchange must establish clear listing criteria and a delisting policy, and must notify VARA before listing any new virtual asset. Exchange VASPs must maintain fair and orderly markets, including implementing circuit breakers and trading halt mechanisms to address extreme volatility, surveillance systems to detect and prevent market manipulation including wash trading, spoofing, and layering, best execution policies ensuring that client orders are executed at the best available prices, and transparent fee schedules published on the platform. Order book integrity must be maintained with real-time monitoring. The exchange must provide clients with trade confirmations including the virtual asset traded, quantity, price, fees, and execution time. Exchange VASPs must segregate client funds and virtual assets from the exchange's proprietary assets and must maintain adequate liquidity reserves to meet withdrawal requests. The exchange must implement robust matching engine technology with demonstrable performance and reliability standards.",
+    "effective_date": "2023-02-07",
+    "tags": ["exchange", "listing-criteria", "delisting", "market-surveillance", "circuit-breakers", "best-execution", "matching-engine"]
+  },
+  {
+    "id": "vara-010",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Compliance and Risk Management Rulebook",
+    "category": "licensing",
+    "title": "VARA Governance and Compliance Framework Requirements",
+    "content": "The VARA Compliance and Risk Management Rulebook requires licensed VASPs to establish a robust governance framework. VASPs must have a board of directors (or equivalent governing body) with at least one independent member and members possessing adequate knowledge and experience in virtual assets, financial services, compliance, and technology. The board must approve the VASP's risk appetite statement, compliance policies, and material business decisions. VASPs must appoint a Chief Compliance Officer (CCO) who reports directly to the board and has adequate authority, independence, and resources. The CCO must not have responsibilities that create conflicts of interest with the compliance function. VASPs must establish three lines of defence: business units as the first line, compliance and risk management as the second line, and internal audit as the third line. A comprehensive risk management framework must address operational risk, market risk, credit risk, liquidity risk, technology risk, and regulatory risk. VASPs must maintain a compliance monitoring programme with regular testing and review. VASPs must conduct and document an annual compliance risk assessment. The board must receive regular compliance reports at least quarterly. VASPs must establish a whistleblowing policy and mechanism. VARA may require the replacement of senior officers who are found not to meet fit and proper standards.",
+    "effective_date": "2023-02-07",
+    "tags": ["governance", "board-of-directors", "CCO", "three-lines-of-defence", "risk-management", "compliance-monitoring", "whistleblowing"]
+  },
+  {
+    "id": "vara-011",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Consumer Protection Rulebook",
+    "category": "disclosure",
+    "title": "VARA Consumer Protection and Disclosure Requirements",
+    "content": "The VARA Consumer Protection Rulebook establishes requirements to ensure fair treatment of customers using virtual asset services in Dubai. VASPs must provide customers with clear, accurate, and timely information about the services offered, including a description of the virtual asset services provided and associated risks, the fee structure with all applicable charges clearly disclosed before transactions are executed, the VASP's complaint handling procedures, the customer's rights including withdrawal and redemption rights where applicable, and information about the regulatory status of the VASP including its VARA licence number. VASPs must establish and maintain an effective complaint handling mechanism, with all complaints acknowledged within 48 hours and resolved within 15 business days. Where resolution exceeds this timeframe, the VASP must inform the customer of the reason for the delay and expected resolution date. VASPs must not engage in practices that are misleading, deceptive, or unconscionable. VASPs must implement a customer suitability assessment before onboarding retail customers for higher-risk services such as lending, margin trading, or derivatives. The suitability assessment must consider the customer's financial situation, investment experience, risk tolerance, and understanding of virtual assets. Customers must be informed that virtual asset investments are not covered by any government deposit insurance scheme.",
+    "effective_date": "2023-02-07",
+    "tags": ["consumer-protection", "disclosure", "complaint-handling", "suitability-assessment", "fees", "rights", "48-hour-acknowledgement"]
+  },
+  {
+    "id": "vara-012",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "ADGM FSRA Framework for Virtual Assets",
+    "category": "licensing",
+    "title": "Abu Dhabi Global Market — FSRA Virtual Asset Framework",
+    "content": "The Abu Dhabi Global Market (ADGM), a financial free zone in Abu Dhabi, operates a separate regulatory framework for virtual assets under its Financial Services Regulatory Authority (FSRA). The ADGM framework, introduced in June 2018 and updated in February 2020, was the first comprehensive virtual asset regulatory framework in the UAE and one of the first globally. The FSRA regulates virtual asset activities under the Financial Services and Markets Regulations (FSMR) 2015, treating certain virtual assets as commodities. Licensed activities include operating a virtual asset exchange (Multilateral Trading Facility or MTF), operating as a virtual asset custodian, operating a virtual asset broker-dealer, and providing virtual asset management services. FSRA licence applicants must demonstrate minimum capital (varying from USD 150,000 for brokers to USD 2 million for exchanges), robust technology infrastructure, adequate AML/CFT controls, and professional indemnity insurance. The ADGM framework is separate from and independent of VARA — VARA's jurisdiction covers the Emirate of Dubai excluding the DIFC, while the ADGM framework applies within the ADGM free zone in Abu Dhabi. This creates a dual regulatory structure within the UAE where virtual asset businesses can choose to establish in either jurisdiction depending on their strategic preferences and target markets.",
+    "effective_date": "2020-02-01",
+    "tags": ["ADGM", "FSRA", "Abu-Dhabi", "free-zone", "MTF", "commodity", "dual-framework", "separate-jurisdiction"]
+  },
+  {
+    "id": "vara-013",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "UAE Federal AML/CFT Law (Federal Decree-Law No. 20 of 2018)",
+    "category": "aml",
+    "title": "UAE Federal AML/CFT Framework Applicable to VASPs",
+    "content": "At the federal level, the UAE's anti-money laundering and counter-terrorist financing framework is established by Federal Decree-Law No. 20 of 2018 on Anti-Money Laundering and Combating the Financing of Terrorism and Financing of Illegal Organisations, and its implementing regulations under Cabinet Decision No. 10 of 2019. Virtual asset service providers operating in the UAE, including those licensed by VARA in Dubai, are designated as Financial Institutions or Designated Non-Financial Businesses and Professions (DNFBPs) under this framework and are subject to the full range of AML/CFT obligations. These obligations include customer due diligence and know-your-customer requirements, ongoing monitoring of transactions and business relationships, suspicious transaction reporting to the UAE Financial Intelligence Unit (FIU), implementation of targeted financial sanctions in accordance with UN Security Council resolutions and UAE-specific designations, record-keeping for at least five years, and appointment of a compliance officer responsible for AML/CFT compliance. The UAE underwent a FATF Mutual Evaluation in 2020 and was placed on the FATF grey list in March 2022 due to strategic deficiencies in its AML/CFT regime. The UAE was subsequently removed from the grey list in February 2024 after demonstrating significant progress in addressing the identified deficiencies. VARA's AML/CFT Rulebook supplements and is consistent with these federal requirements.",
+    "effective_date": "2018-10-30",
+    "tags": ["federal-AML", "Decree-Law-20", "FIU", "FATF-grey-list", "targeted-financial-sanctions", "compliance-officer", "UAE-wide"]
+  },
+  {
+    "id": "vara-014",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Enforcement — FTX and Related Actions",
+    "category": "enforcement",
+    "title": "VARA Enforcement Actions and Regulatory Response to FTX",
+    "content": "VARA took enforcement action in the wake of the FTX collapse in November 2022. FTX had been operating in Dubai under a Minimum Viable Product (MVP) licence granted by VARA as part of its phased licensing approach. Following FTX's global collapse and bankruptcy filing, VARA suspended FTX's MVP licence and subsequently revoked it, citing FTX's failure to maintain regulatory standards and the existential threat to customer assets. VARA issued a public statement emphasising that FTX MENA's Dubai operations were ring-fenced from the global FTX entity and that VARA had required FTX MENA to maintain segregated customer assets within the UAE. VARA stated that it had not permitted FTX MENA to commence full retail operations, limiting the impact on Dubai-based customers. The incident prompted VARA to strengthen its licensing framework, moving from the MVP phased approach to a more comprehensive full licensing requirement. VARA also increased scrutiny of applicants' group-level governance, intercompany fund flows, and the adequacy of ring-fencing arrangements. In subsequent enforcement actions, VARA imposed fines on multiple VASPs for non-compliance with operational requirements, demonstrating its willingness to exercise enforcement powers. VARA has published limited details of enforcement actions compared to some other regulators, but has indicated its intent to increase transparency around enforcement outcomes.",
+    "effective_date": "2022-11-11",
+    "tags": ["FTX", "enforcement", "licence-revocation", "MVP-licence", "ring-fencing", "customer-protection", "strengthened-framework"]
+  },
+  {
+    "id": "vara-015",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Licensing Process — Phased Approach",
+    "category": "licensing",
+    "title": "VARA Multi-Stage Licensing Process",
+    "content": "VARA operates a multi-stage licensing process for virtual asset service providers seeking to operate in Dubai. The process begins with an Initial Assessment stage where the applicant submits preliminary information including a business plan, corporate structure, key personnel details, and an overview of proposed services. VARA conducts an initial assessment to determine whether the applicant meets threshold criteria for proceeding. If the initial assessment is successful, the applicant proceeds to the Full Application stage, submitting comprehensive documentation including detailed policies and procedures for AML/CFT compliance, technology and cybersecurity, risk management, governance, customer protection, and operational resilience. VARA conducts a thorough review including background checks on key individuals, assessment of financial resources, and evaluation of operational readiness. Upon approval of the full application, the VASP is granted a Preparatory licence (formerly known as MVP or Provisional licence) which permits limited operations under close VARA supervision. The VASP must demonstrate operational compliance during this phase. The final stage is the grant of a Full Operational licence, which permits the VASP to offer services to the full market. Each stage has specific fees: the initial assessment fee, application fee, and annual supervision fees vary based on the licence category. VARA has not publicly disclosed exact fee schedules but industry reports indicate total licensing costs from approximately AED 100,000 to AED 1,000,000 depending on the complexity of the application.",
+    "effective_date": "2023-02-07",
+    "tags": ["licensing-process", "multi-stage", "initial-assessment", "preparatory-licence", "operational-licence", "fees", "supervision"]
+  },
+  {
+    "id": "vara-016",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Lending and Borrowing Services Rulebook",
+    "category": "licensing",
+    "title": "VARA Lending and Borrowing Services Requirements",
+    "content": "The VARA Lending and Borrowing Services Rulebook establishes requirements for VASPs providing virtual asset lending and borrowing facilities. Licensed lenders must clearly disclose to borrowers all material terms including interest rates, fees, collateral requirements, margin call procedures, and liquidation policies. Lending VASPs must implement robust credit risk assessment procedures including evaluation of counterparty creditworthiness and collateral adequacy. Collateral requirements must be set at prudent levels, with loan-to-value (LTV) ratios established based on the volatility and liquidity characteristics of the virtual assets involved. The VASP must implement automated margin call and liquidation systems that operate transparently and in accordance with disclosed policies. Customer assets deposited as collateral must be segregated from the VASP's proprietary assets. Re-hypothecation (the use of client collateral for the VASP's own purposes) is restricted and requires explicit customer consent with clear disclosure of the associated risks. Lending VASPs must maintain adequate reserves to meet withdrawal requests from depositors and must conduct regular stress testing of their lending portfolios. Following the collapses of several crypto lending platforms globally (Celsius, BlockFi, Voyager), VARA's lending rules are among the more prescriptive globally, reflecting lessons learned from those failures.",
+    "effective_date": "2023-02-07",
+    "tags": ["lending", "borrowing", "LTV", "collateral", "margin-call", "liquidation", "re-hypothecation", "credit-risk"]
+  },
+  {
+    "id": "vara-017",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Enforcement Powers, Chapter 8",
+    "category": "enforcement",
+    "title": "VARA Supervisory and Enforcement Powers",
+    "content": "VARA has broad supervisory and enforcement powers under Dubai Law No. 4 of 2022 and its implementing regulations. VARA may conduct on-site and off-site inspections of licensed VASPs, including unannounced inspections. VARA may request any information, documents, or records from a VASP necessary for its supervisory functions. Enforcement powers include the power to issue warnings and reprimands, impose conditions on or restrict the scope of a VASP's licence, direct a VASP to take specific remedial actions within a prescribed timeframe, impose administrative fines for regulatory breaches, suspend a VASP's licence temporarily, revoke a VASP's licence for serious or persistent breaches, and refer matters to the relevant law enforcement or judicial authorities for criminal investigation. Administrative fines may be imposed on a graduated basis depending on the severity, duration, and systemic impact of the infringement, whether the infringement was intentional or negligent, and the VASP's cooperation with VARA during the investigation. VARA may also impose personal sanctions on individuals including prohibition from holding senior positions at VASPs. VARA has the power to appoint an administrator to manage the affairs of a VASP in circumstances where the VASP's operations pose an immediate risk to customers or market integrity. These powers give VARA a comprehensive enforcement toolkit comparable to established financial regulators.",
+    "effective_date": "2023-02-07",
+    "tags": ["enforcement-powers", "inspections", "fines", "licence-revocation", "suspension", "remedial-actions", "administrator"]
+  },
+  {
+    "id": "vara-018",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Stablecoin and Virtual Asset Issuance Rules",
+    "category": "stablecoin",
+    "title": "VARA Requirements for Virtual Asset Issuance",
+    "content": "VARA's regulatory framework includes specific requirements for the issuance of virtual assets within Dubai. Issuers of virtual assets must obtain VARA approval before issuing any virtual asset intended for public distribution or trading. The issuance process requires submission of a comprehensive white paper or offering document that describes the virtual asset's characteristics, technology, governance, economic model, rights of holders, and associated risks. For stablecoins and asset-backed tokens, issuers must demonstrate that reserve assets are adequate and properly managed. Reserve assets must be held with regulated custodians or financial institutions, must be segregated from the issuer's operating assets, and must be subject to regular independent attestation. VARA requires that stablecoin reserves consist of high-quality liquid assets including cash, government securities, and investment-grade short-term instruments. The issuer must provide holders with a clear redemption mechanism and must process redemptions within a reasonable timeframe. For utility tokens, the issuer must demonstrate that the token has a genuine functional use case and that the issuance is not primarily designed to raise capital. VARA may classify tokens that do not meet utility token criteria as investment tokens, subjecting them to additional requirements analogous to securities regulation. All virtual asset issuances must comply with VARA's AML/CFT requirements including screening of investors and monitoring of secondary market activity.",
+    "effective_date": "2023-02-07",
+    "tags": ["issuance", "stablecoin", "white-paper", "reserve-assets", "redemption", "utility-token", "investment-token", "attestation"]
+  },
+  {
+    "id": "vara-019",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Licensed Entities — Major Approvals",
+    "category": "licensing",
+    "title": "Notable VARA Licensed Entities in Dubai",
+    "content": "Since commencing operations, VARA has granted licences to several notable virtual asset service providers, establishing Dubai as a significant hub for regulated crypto activity. Binance's Dubai entity (Binance FZE) received a Full Operational VASP licence from VARA in 2023, making it one of the first global exchanges to obtain a comprehensive regulatory licence in Dubai. The licence permits Binance to offer exchange, broker-dealer, and custody services to qualified and institutional investors in Dubai. Crypto.com obtained a preparatory licence from VARA in 2023 for exchange and broker-dealer services. Bybit received a Full Operational licence for exchange, custody, and broker-dealer services. OKX obtained a preparatory licence for exchange services in Dubai. Hex Trust, a digital asset custodian, received a custody services licence. These approvals were granted following VARA's rigorous multi-stage assessment process and reflect the high compliance standards required. VARA has emphasised that licence approvals are not endorsements of the VASP's products and that customers should conduct their own due diligence. The concentration of major global exchanges obtaining VARA licences has positioned Dubai as one of the most active regulated crypto markets in the Middle East and has contributed to the growth of Dubai's virtual asset ecosystem including supporting services such as legal firms, compliance consultancies, and technology providers.",
+    "effective_date": "2023-07-01",
+    "tags": ["licensed-entities", "Binance", "Crypto.com", "Bybit", "OKX", "Hex-Trust", "Dubai-hub", "Full-Operational"]
+  },
+  {
+    "id": "vara-020",
+    "jurisdiction": "AE",
+    "framework": "VARA",
+    "article": "VARA Market Conduct Rulebook",
+    "category": "enforcement",
+    "title": "VARA Market Conduct and Integrity Requirements",
+    "content": "The VARA Market Conduct Rulebook establishes prohibitions and requirements designed to maintain market integrity in virtual asset markets within Dubai. VASPs and their employees are prohibited from engaging in market manipulation, including wash trading (executing transactions where the beneficial ownership does not change), spoofing (placing orders with the intent to cancel before execution to create a false impression of demand or supply), layering (placing multiple orders at different price levels with the intent to manipulate the order book), and front-running (executing proprietary trades ahead of client orders using knowledge of pending orders). Insider dealing is prohibited — persons who possess material non-public information about a virtual asset or a VASP must not trade on that information or communicate it to others for trading purposes. VASPs operating exchanges must implement market surveillance systems capable of detecting suspicious trading patterns in real time and must report suspected market abuse to VARA without delay. VASPs must establish and enforce policies to prevent conflicts of interest, including restrictions on proprietary trading where it may conflict with client interests. Market makers and liquidity providers must be disclosed to VARA and must operate under clear agreements that prevent manipulative practices. VASPs must maintain complete and accurate trade records for at least eight years and make them available to VARA upon request. These requirements demonstrate VARA's commitment to establishing professional-grade market integrity standards comparable to established financial markets.",
+    "effective_date": "2023-02-07",
+    "tags": ["market-conduct", "manipulation", "wash-trading", "spoofing", "insider-dealing", "front-running", "surveillance", "conflicts-of-interest"]
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "update-2025-001",
+    "jurisdiction": "SG",
+    "date": "2025-06-30",
+    "title": "Singapore DTSP Regime Under FSMA 2022 Takes Effect",
+    "summary": "New Digital Token Service Provider (DTSP) licensing regime under Financial Services and Markets Act 2022 came into force 30 June 2025. Singapore corporations serving overseas clients with digital token services now need DTSP licence. No transitional period. Minimum capital: SGD 250,000. Annual fee: SGD 10,000. MAS will 'generally not issue a licence' due to high ML risk — only exceptional cases.",
+    "impact": "HIGH",
+    "affects": ["any entity incorporated in Singapore providing DPT/digital token services to overseas clients"],
+    "category": "licensing",
+    "tags": ["DTSP", "FSMA-2022", "Singapore", "licensing", "2025-update", "overseas-clients"],
+    "content": "The Financial Services and Markets Act 2022 (FSMA 2022) introduced a new licensing regime for Digital Token Service Providers (DTSPs) that came into effect on 30 June 2025. Under this regime, any corporation incorporated in Singapore that provides digital token services to persons outside of Singapore must obtain a DTSP licence from MAS. Digital token services include dealing in digital tokens, facilitating exchange of digital tokens, and providing custodial services for digital tokens where the clients are based overseas. There is no transitional period — unlicensed provision of such services became an offence immediately upon the regime's commencement. The minimum base capital requirement for DTSP licensees is SGD 250,000, and the annual licence fee is SGD 10,000. Critically, MAS has stated that it will 'generally not issue a licence' for DTSP activities due to the high money laundering and terrorism financing risks associated with cross-border digital token services. Only applicants that can demonstrate exceptional AML/CFT controls and a clear business rationale will be considered. This regime is separate from and additional to the Payment Services Act licensing requirements for domestic DPT services. Singapore-incorporated entities that were previously providing digital token services to overseas clients without a PS Act licence (because the services were directed at overseas rather than Singapore customers) are now caught by this new regime. Failure to obtain a DTSP licence carries criminal penalties including fines up to SGD 250,000 and imprisonment up to 3 years."
+  },
+  {
+    "id": "update-2025-002",
+    "jurisdiction": "US",
+    "date": "2025-01-20",
+    "title": "SEC Project Crypto Under Chair Paul Atkins",
+    "summary": "Trump administration inaugurated Jan 20, 2025. SEC Chair Paul Atkins replaced Gary Gensler. SEC launched 'Project Crypto' on Nov 12, 2025, signaling shift from enforcement to clear registration pathways. SEC dismissed with prejudice actions vs Coinbase, Binance, Gemini. FY2025: only 13 crypto enforcement actions (down 60% from 33 in 2024). Monetary penalties: $142M (vs $8.2B in FY2024). Howey Test still applies but SEC developing guidance distinguishing centralized vs decentralized tokens.",
+    "impact": "HIGH",
+    "affects": ["all crypto businesses with US exposure"],
+    "category": "enforcement",
+    "tags": ["SEC", "Paul-Atkins", "Project-Crypto", "Trump", "enforcement-reduction", "2025-update", "Coinbase-dismissed", "Binance-dismissed"],
+    "content": "The inauguration of the Trump administration on January 20, 2025 brought a fundamental shift in US crypto regulatory policy. SEC Chair Gary Gensler resigned effective January 20, 2025 and was replaced by Paul Atkins, a former SEC commissioner known for advocating lighter-touch regulation and crypto-friendly policies. Under Chair Atkins, the SEC launched 'Project Crypto' on November 12, 2025, a comprehensive initiative to develop clear registration pathways for crypto-asset businesses rather than relying on enforcement actions as the primary regulatory tool. In a dramatic reversal, the SEC dismissed with prejudice its enforcement actions against Coinbase (No. 1:23-cv-04738), Binance (portions of the civil action), and Gemini, effectively conceding these cases. The SEC's Crypto Task Force, established under Commissioner Hester Peirce, began developing guidance to distinguish between centralized tokens (which may still be securities) and sufficiently decentralized tokens (which the SEC may treat as non-securities). In FY2025, the SEC brought only 13 crypto-related enforcement actions, a 60% decrease from 33 actions in FY2024. Total monetary penalties in crypto enforcement dropped to approximately $142 million in FY2025, compared to $8.2 billion in FY2024. The Howey Test remains the legal standard for determining security status, but the SEC is developing supplementary guidance that would provide clearer criteria for when a digital asset has achieved sufficient decentralization to no longer be considered a security. This does not mean compliance is optional — the SEC continues to pursue fraud cases and projects that clearly sell securities without registration. However, the enforcement-first approach of the Gensler era has been replaced by a framework-development approach that prioritizes regulatory clarity."
+  },
+  {
+    "id": "update-2025-003",
+    "jurisdiction": "EU",
+    "date": "2024-12-30",
+    "title": "MiCA Phase 2 Fully In Force",
+    "summary": "MiCA Phase 2 (crypto-assets other than ARTs/EMTs, plus all CASPs) fully applicable from 30 December 2024. All crypto-asset service providers must be authorised as CASPs by home-state NCA. Passporting rights available across all 27 EU member states. ESMA maintaining central CASP register.",
+    "impact": "HIGH",
+    "affects": ["all crypto businesses serving EU persons"],
+    "category": "licensing",
+    "tags": ["MiCA", "Phase-2", "CASP", "passporting", "ESMA", "2024-update", "full-application"],
+    "content": "MiCA Phase 2 became fully applicable on 30 December 2024, completing the implementation of the Markets in Crypto-Assets Regulation (EU 2023/1114). Phase 1, covering Asset-Referenced Tokens (ARTs) and E-Money Tokens (EMTs), had been applicable since 30 June 2024. With Phase 2, the entire MiCA framework is now in force, covering all remaining crypto-asset categories and all Crypto-Asset Service Provider (CASP) activities. From this date, no entity may provide crypto-asset services within the EU without CASP authorisation from the competent authority of its home Member State. Authorised CASPs benefit from passporting rights to provide services across all 27 EU member states without additional authorisation in each host state, subject to notification. ESMA established and maintains the central register of all authorised CASPs, published crypto-asset white papers, and authorised ART/EMT issuers. Transitional provisions vary by Member State — some Member States allowed existing crypto businesses to continue operating under national regimes for up to 18 months (until 1 July 2026), while others required immediate compliance. Firms that had been operating under national registration regimes (e.g., France's DASP registration, Germany's BaFin crypto custody licence) must transition to full MiCA CASP authorisation within the applicable transitional period. The minimum own funds requirements for CASPs range from €50,000 (advice, order reception) to €150,000 (trading platform operation). All CASPs must comply with the conduct-of-business rules under MiCA Title V, client asset segregation requirements, and the EU Transfer of Funds Regulation (zero-threshold Travel Rule) from day one of authorisation."
+  },
+  {
+    "id": "update-2025-004",
+    "jurisdiction": "GLOBAL",
+    "date": "2025-06-01",
+    "title": "FATF 2025 Targeted Update on VAs/VASPs",
+    "summary": "Fifth FATF update on Recommendation 15 implementation. Key findings: $51B estimated illicit on-chain activity in 2024 (fraud/scams dominant). 99 jurisdictions have passed or are implementing Travel Rule legislation. Stablecoins increasingly used for illicit activity. DPRK continues VA theft. FATF urges jurisdictions to implement full R.15 standards urgently.",
+    "impact": "MEDIUM",
+    "affects": ["all VASPs globally"],
+    "category": "aml",
+    "tags": ["FATF", "Recommendation-15", "Travel-Rule", "illicit-activity", "stablecoin-risk", "DPRK", "2025-update"],
+    "content": "The Financial Action Task Force (FATF) published its fifth targeted update on the implementation of Recommendation 15 on virtual assets and virtual asset service providers in June 2025. The update assessed global progress in implementing FATF standards for the VA/VASP sector and identified key risks and areas for improvement. Key findings include: estimated on-chain illicit activity reached $51 billion in 2024, with fraud and scams accounting for the largest share, followed by ransomware and darknet marketplace transactions. 99 out of 130 assessed jurisdictions have now passed or are actively implementing legislation to regulate VASPs, up from 75 jurisdictions in the 2023 update. However, only 29 jurisdictions have fully implemented the Travel Rule for virtual asset transfers — FATF identified this as a critical gap and urged all jurisdictions to complete implementation urgently. The update highlighted the increasing use of stablecoins for illicit purposes, noting that stablecoins now account for a growing share of illicit transaction volume due to their price stability and wide acceptance. The Democratic People's Republic of Korea (DPRK) continues to conduct large-scale virtual asset theft to fund its weapons programmes, with estimated DPRK-linked thefts exceeding $1.3 billion in 2024. FATF reiterated that all jurisdictions must implement the full suite of R.15 standards including: registration or licensing of VASPs, supervision of VASPs for AML/CFT compliance, Travel Rule implementation for VA transfers, and application of sanctions screening to VA transactions. FATF also signaled that its upcoming mutual evaluation methodology will place increased emphasis on effective VASP supervision and Travel Rule implementation."
+  },
+  {
+    "id": "update-2025-005",
+    "jurisdiction": "US",
+    "date": "2025-01-23",
+    "title": "Trump Executive Order on Digital Assets",
+    "summary": "Executive Order 'Strengthening American Leadership in Digital Financial Technology' issued Jan 23, 2025. Establishes Presidential Working Group on Digital Asset Markets. Directs agencies to promote US leadership in crypto. Signals regulatory clarity over enforcement. Explicitly promotes Bitcoin and crypto industry. Prohibits establishment of CBDC.",
+    "impact": "MEDIUM",
+    "affects": ["all crypto businesses with US exposure"],
+    "category": "licensing",
+    "tags": ["Trump", "Executive-Order", "Presidential-Working-Group", "CBDC-prohibition", "regulatory-clarity", "2025-update"],
+    "content": "On January 23, 2025, President Trump signed Executive Order 14178, titled 'Strengthening American Leadership in Digital Financial Technology.' The Executive Order establishes a Presidential Working Group on Digital Asset Markets, chaired by the White House AI and Crypto Czar David Sacks, with membership including the Secretary of the Treasury, the Attorney General, the SEC Chair, the CFTC Chair, and other agency heads. The Working Group is tasked with developing a federal regulatory framework for digital assets including stablecoins, and with evaluating the creation of a national digital asset reserve (potentially including Bitcoin). The Executive Order explicitly directs federal agencies to promote the development of the digital asset industry in the United States and to provide regulatory clarity rather than relying on enforcement actions. It prohibits any federal agency from taking action to establish, issue, or promote a Central Bank Digital Currency (CBDC) in the United States, reversing the research direction of the Biden administration. The Executive Order also revokes several Biden-era executive orders and regulatory directives related to digital assets, including EO 14067 on Ensuring Responsible Development of Digital Assets. While the Executive Order sets policy direction and establishes institutional mechanisms, it does not directly change existing laws or regulations — Congress must still pass legislation to create a comprehensive digital asset regulatory framework. The Executive Order signals a significant shift in the US government's posture toward the crypto industry from one of skepticism and enforcement to one of promotion and accommodation."
+  },
+  {
+    "id": "update-2025-006",
+    "jurisdiction": "SG",
+    "date": "2025-06-30",
+    "title": "MAS PSN02 AML/CFT Notice Revised",
+    "summary": "MAS Notice PSN02 on AML/CFT for Digital Payment Token service providers revised 30 June 2025. Updated requirements for CDD, transaction monitoring, Travel Rule implementation (above SGD 1,500), and record-keeping for DPT service providers.",
+    "impact": "MEDIUM",
+    "affects": ["Singapore-licensed DPT service providers"],
+    "category": "aml",
+    "tags": ["MAS", "PSN02", "AML", "CFT", "CDD", "Travel-Rule", "2025-update", "revised-notice"],
+    "content": "MAS Notice PSN02 on Prevention of Money Laundering and Countering the Financing of Terrorism for holders of a payment service provider licence for digital payment token services was revised effective 30 June 2025. The revised notice updates several key requirements for DPT service providers. Customer Due Diligence (CDD) requirements have been strengthened to require enhanced verification for customers transacting in amounts above SGD 20,000 within any rolling 30-day period, even where the individual transactions are below the standard CDD threshold. Transaction monitoring requirements now explicitly mandate the use of blockchain analytics tools capable of tracing transactions across multiple blockchains and identifying exposure to sanctioned addresses, darknet marketplaces, and mixing services. The Travel Rule implementation requirements remain at the SGD 1,500 threshold for transmittals of digital payment tokens, but the revised notice adds specific requirements for handling transfers to and from unhosted wallets, requiring DPT service providers to conduct risk assessments for all transfers involving unhosted wallets and to implement ownership verification measures for transfers above SGD 5,000 to unhosted wallets. Record-keeping requirements have been extended from 5 years to 7 years from the date of cessation of the business relationship. The revised notice also introduces new requirements for DPT service providers to conduct annual independent AML/CFT programme reviews and to report the results to MAS. These revisions align with the FATF's 2025 targeted update on VA/VASP standards and reflect MAS's continued strengthening of its crypto AML/CFT framework."
+  }
+]

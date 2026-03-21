@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(tree:*)",
+      "Bash(python -c \"from src.config import Config; print(''✅ Config loaded successfully''); print(f''Gemini API Key: {Config.GEMINI_API_KEY[:20]}...''); print(f''Supported Jurisdictions: {Config.SUPPORTED_JURISDICTIONS}'')\")",
+      "Bash(python:*)",
+      "Bash(./venv/bin/python3:*)",
+      "Bash(huggingface-cli:*)",
+      "Read(//Users/arjit/Documents/Professional/**)",
+      "Bash(tee:*)",
+      "Bash(pkill -f \"huggingface-cli upload\")",
+      "Bash(cd:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"Initial deployment: Crypto Compliance Agent - Phases 1-7 complete\n\n- Multi-jurisdiction compliance analysis (US, EU, Singapore, UK, UAE)\n- LangGraph agent with 6-node workflow\n- ComplianceEngine with ~150 requirements\n- RiskScorer with 5 weighted factors\n- CostCalculator with 65+ cost entries\n- Streamlit UI with Plotly visualizations\n- All integration tests passing\")",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(curl -s \"https://huggingface.co/api/spaces/arjitmat/crypto-compliance-agent\")",
+      "Bash(git commit:*)",
+      "Bash(curl -s \"https://huggingface.co/api/spaces/arjitmat/crypto-compliance-agent/tree/main\")",
+      "Bash(timeout 60 git push -f space main)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
