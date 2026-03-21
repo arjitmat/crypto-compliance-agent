@@ -8,6 +8,10 @@ import os
 import re
 import traceback
 
+# Fix tokenizer fork crash on macOS (must be before any HF import)
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["OMP_NUM_THREADS"] = "1"
+
 import gradio as gr
 
 # ═══════════════════════════════════════════════════════════════════════════
