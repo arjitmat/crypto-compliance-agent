@@ -1,4 +1,4 @@
-"""CryptoComply — Multi-Agent Crypto Compliance Intelligence Platform.
+"""Aegis — Multi-Agent Crypto Compliance Intelligence Platform.
 
 Gradio application entry point for HuggingFace Spaces.
 Single-page vertical flow. Design: deep forest glassmorphism with sage-teal accents.
@@ -80,246 +80,241 @@ FONT_LINK = ""  # empty — fonts loaded via @import in CUSTOM_CSS
 CUSTOM_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ══ BASE ══════════════════════════════════════════════════════════════ */
+/* ══ RESET & BASE ══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
 body, .gradio-container, .main, .wrap, .contain {
-  background: #040d12 !important;
-  color: #e8f4f1 !important;
+  background: #040d12 !important; color: #e8f4f1 !important;
   font-family: 'DM Sans', sans-serif !important;
-  min-height: 100vh;
 }
-.gradio-container { max-width: 880px !important; margin: 0 auto !important; }
-
-h1, h2, h3, .prose h1, .prose h2, .prose h3 {
-  font-family: 'Sora', sans-serif !important;
-  color: #e8f4f1 !important;
-  font-weight: 600 !important;
-}
+.gradio-container { max-width: 900px !important; margin: 0 auto !important; position: relative; z-index: 1; }
+h1,h2,h3,.prose h1,.prose h2,.prose h3 { font-family: 'Sora', sans-serif !important; color: #e8f4f1 !important; font-weight: 600 !important; }
 
 /* ══ SCROLLBAR ═════════════════════════════════════════════════════════ */
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,201,167,0.2); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(0,201,167,0.25); border-radius: 10px; }
 
-/* ══ AURORA (injected via #aurora div) ═════════════════════════════════ */
-#aurora { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-#aurora .blob1 {
-  position: absolute; top: -120px; right: -100px;
-  width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,201,167,0.06), transparent 70%);
-  animation: drift1 25s ease-in-out infinite;
+/* ══ AURORA BACKGROUND ═════════════════════════════════════════════════ */
+#aurora { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+#aurora .b1 {
+  position: absolute; top: -15%; right: -10%;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.07) 0%, transparent 70%);
+  animation: d1 25s ease-in-out infinite;
 }
-#aurora .blob2 {
-  position: absolute; bottom: -100px; left: -80px;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,201,167,0.04), transparent 70%);
-  animation: drift2 30s ease-in-out infinite;
+#aurora .b2 {
+  position: absolute; bottom: -10%; left: -8%;
+  width: 550px; height: 550px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.05) 0%, transparent 70%);
+  animation: d2 30s ease-in-out infinite;
 }
-@keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-60px,40px)} }
-@keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-50px)} }
+#aurora .b3 {
+  position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%);
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.03) 0%, transparent 70%);
+  animation: d3 35s ease-in-out infinite;
+}
+@keyframes d1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-80px,50px)} }
+@keyframes d2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-60px)} }
+@keyframes d3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.15)} }
 
-/* ══ GLASS CARDS ═══════════════════════════════════════════════════════ */
+/* ══ MESH GRID OVERLAY (subtle) ════════════════════════════════════════ */
+#grid {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(0,201,167,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,201,167,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+}
+
+/* ══ GLASS PANELS ══════════════════════════════════════════════════════ */
 .glass, .gr-group, .gradio-group {
-  background: rgba(0,201,167,0.04) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  background: rgba(0,201,167,0.03) !important;
+  backdrop-filter: blur(20px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
   border: 1px solid rgba(0,201,167,0.12) !important;
   border-radius: 16px !important;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 .glass:hover, .gr-group:hover {
-  border-color: rgba(0,201,167,0.22) !important;
-  box-shadow: 0 8px 32px rgba(0,201,167,0.08) !important;
+  border-color: rgba(0,201,167,0.25) !important;
+  box-shadow: 0 8px 40px rgba(0,201,167,0.08), inset 0 1px 0 rgba(0,201,167,0.06) !important;
 }
 
-/* ══ TEXT INPUTS ════════════════════════════════════════════════════════ */
+/* ══ INPUTS ════════════════════════════════════════════════════════════ */
 .gr-panel, .gr-box, .gr-form { background: transparent !important; border: none !important; }
-
 textarea, input[type="text"], .gr-textbox textarea {
-  background: rgba(0,0,0,0.3) !important;
-  border: 1px solid rgba(0,201,167,0.15) !important;
-  border-radius: 10px !important;
+  background: rgba(4,13,18,0.8) !important;
+  border: 1px solid rgba(0,201,167,0.12) !important;
+  border-radius: 12px !important;
   color: #e8f4f1 !important;
   font-family: 'DM Sans', sans-serif !important;
   font-size: 14px !important;
   padding: 14px 16px !important;
-  line-height: 1.6 !important;
-  transition: border-color 0.2s ease !important;
+  line-height: 1.65 !important;
+  transition: all 0.25s ease !important;
 }
 textarea:focus, input[type="text"]:focus {
-  border-color: rgba(0,201,167,0.4) !important;
-  box-shadow: 0 0 0 3px rgba(0,201,167,0.08) !important;
+  border-color: #00C9A7 !important;
+  box-shadow: 0 0 0 3px rgba(0,201,167,0.08), 0 0 20px rgba(0,201,167,0.05) !important;
   outline: none !important;
 }
-textarea::placeholder { color: rgba(232,244,241,0.25) !important; }
+textarea::placeholder { color: rgba(232,244,241,0.2) !important; }
 
 /* ══ LABELS ════════════════════════════════════════════════════════════ */
 label, .gr-label, span.svelte-1gfkn6j {
   font-family: 'DM Sans', sans-serif !important;
-  font-size: 13px !important;
-  color: rgba(232,244,241,0.6) !important;
-  letter-spacing: 0.2px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: rgba(232,244,241,0.45) !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
 }
 
-/* ══ CHECKBOXES — glass pills ══════════════════════════════════════════ */
+/* ══ CHECKBOX PILLS ════════════════════════════════════════════════════ */
 .gr-check-radio, .gr-checkbox-group { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
-
+.gr-check-radio input[type="checkbox"], .gr-checkbox-group input[type="checkbox"] { display: none !important; }
 .gr-check-radio label, .gr-checkbox-group label {
-  background: rgba(0,201,167,0.05) !important;
-  border: 1px solid rgba(0,201,167,0.15) !important;
-  border-radius: 20px !important;
-  padding: 6px 14px !important;
+  background: rgba(4,13,18,0.6) !important;
+  border: 1px solid rgba(0,201,167,0.12) !important;
+  border-radius: 100px !important;
+  padding: 8px 18px !important;
   cursor: pointer !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
   font-family: 'DM Sans', sans-serif !important;
   font-size: 13px !important;
-  color: rgba(232,244,241,0.7) !important;
+  font-weight: 400 !important;
+  color: rgba(232,244,241,0.6) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 .gr-check-radio label:hover, .gr-checkbox-group label:hover {
   border-color: rgba(0,201,167,0.3) !important;
-  background: rgba(0,201,167,0.08) !important;
+  background: rgba(0,201,167,0.06) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,201,167,0.06);
 }
 .gr-check-radio label:has(input:checked), .gr-checkbox-group label:has(input:checked) {
-  background: rgba(0,201,167,0.15) !important;
+  background: rgba(0,201,167,0.12) !important;
   border-color: #00C9A7 !important;
   color: #00C9A7 !important;
-  box-shadow: 0 0 14px rgba(0,201,167,0.10);
-}
-.gr-check-radio input[type="checkbox"], .gr-checkbox-group input[type="checkbox"] {
-  display: none !important;
+  box-shadow: 0 0 16px rgba(0,201,167,0.12), inset 0 1px 0 rgba(0,201,167,0.08);
 }
 
 /* ══ PRIMARY BUTTON ════════════════════════════════════════════════════ */
 .gr-button-primary {
-  background: transparent !important;
-  border: 1px solid #00C9A7 !important;
+  background: rgba(0,201,167,0.08) !important;
+  border: 1px solid rgba(0,201,167,0.35) !important;
   color: #00C9A7 !important;
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 500 !important;
   font-size: 15px !important;
   border-radius: 12px !important;
-  padding: 14px 28px !important;
+  padding: 16px 32px !important;
   letter-spacing: 0.3px !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
-  overflow: hidden !important;
 }
 .gr-button-primary:hover {
-  background: rgba(0,201,167,0.1) !important;
-  box-shadow: 0 0 24px rgba(0,201,167,0.2) !important;
-  transform: translateY(-1px) !important;
+  background: rgba(0,201,167,0.15) !important;
+  border-color: #00C9A7 !important;
+  box-shadow: 0 0 30px rgba(0,201,167,0.15), 0 4px 20px rgba(0,201,167,0.10) !important;
+  transform: translateY(-2px) !important;
 }
-.gr-button-primary:active { transform: translateY(0) !important; }
+.gr-button-primary:active { transform: translateY(0) !important; box-shadow: none !important; }
 
 /* ══ ACCORDIONS ════════════════════════════════════════════════════════ */
 .gr-accordion {
-  background: rgba(0,201,167,0.03) !important;
-  border: 1px solid rgba(0,201,167,0.1) !important;
-  border-radius: 12px !important;
+  background: rgba(0,201,167,0.02) !important;
+  border: 1px solid rgba(0,201,167,0.08) !important;
+  border-radius: 14px !important;
   margin-bottom: 8px !important;
   overflow: hidden;
+  transition: all 0.3s ease !important;
+}
+.gr-accordion:hover {
+  border-color: rgba(0,201,167,0.18) !important;
+  box-shadow: 0 4px 20px rgba(0,201,167,0.04) !important;
 }
 .gr-accordion > .label-wrap, .gr-accordion .label-wrap {
   font-family: 'DM Sans', sans-serif !important;
   font-size: 14px !important;
   font-weight: 500 !important;
-  color: #e8f4f1 !important;
+  color: rgba(232,244,241,0.85) !important;
   padding: 14px 18px !important;
 }
 
 /* ══ MARKDOWN ══════════════════════════════════════════════════════════ */
-.prose, .md, .markdown-text {
-  color: #e8f4f1 !important;
-  font-family: 'DM Sans', sans-serif !important;
-  line-height: 1.7 !important;
-}
+.prose, .md, .markdown-text { color: #e8f4f1 !important; font-family: 'DM Sans', sans-serif !important; line-height: 1.75 !important; }
 .prose strong { color: #e8f4f1 !important; }
-.prose table { border-collapse: collapse; width: 100%; }
+.prose table { border-collapse: collapse; width: 100%; margin: 12px 0; }
 .prose th {
-  background: rgba(0,201,167,0.06); color: #00C9A7;
-  padding: 9px 12px; text-align: left;
-  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
-  border-bottom: 1px solid rgba(0,201,167,0.12);
+  background: rgba(0,201,167,0.06); color: #00C9A7; padding: 10px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+  border-bottom: 1px solid rgba(0,201,167,0.15); text-transform: uppercase; letter-spacing: 0.5px;
 }
-.prose td {
-  padding: 9px 12px; font-size: 13px;
-  border-bottom: 1px solid rgba(0,201,167,0.06);
-}
+.prose td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid rgba(0,201,167,0.05); }
+.prose tr:hover td { background: rgba(0,201,167,0.02); }
 .prose code {
-  background: rgba(0,201,167,0.07); padding: 2px 7px; border-radius: 5px;
+  background: rgba(0,201,167,0.08); padding: 3px 8px; border-radius: 6px;
   color: #6ee7b0; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  border: 1px solid rgba(0,201,167,0.08);
 }
 
 /* ══ TOOLTIPS ══════════════════════════════════════════════════════════ */
-.tt {
-  color: #6ee7b0; border-bottom: 1px dotted rgba(0,201,167,0.25);
-  cursor: help; position: relative;
-}
+.tt { color: #6ee7b0; border-bottom: 1px dotted rgba(0,201,167,0.3); cursor: help; position: relative; }
 .tt:hover::after {
   content: attr(data-tip); position: absolute; bottom: calc(100% + 10px); left: 50%;
-  transform: translateX(-50%); background: #071a14;
-  border: 1px solid rgba(0,201,167,0.15); color: #e8f4f1;
+  transform: translateX(-50%); background: rgba(4,13,18,0.95);
+  border: 1px solid rgba(0,201,167,0.2); color: #e8f4f1;
   font-size: 12px; font-family: 'DM Sans', sans-serif; line-height: 1.5;
-  padding: 11px 14px; border-radius: 10px; width: 270px; z-index: 999;
-  pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  padding: 12px 16px; border-radius: 12px; width: 280px; z-index: 999;
+  pointer-events: none; box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0,201,167,0.05);
+  backdrop-filter: blur(20px);
 }
 
 /* ══ ANIMATIONS ════════════════════════════════════════════════════════ */
-@keyframes breathe { 0%,100%{opacity:0.8} 50%{opacity:1} }
+@keyframes breathe { 0%,100%{opacity:0.7;filter:drop-shadow(0 0 8px rgba(0,201,167,0.2))} 50%{opacity:1;filter:drop-shadow(0 0 16px rgba(0,201,167,0.4))} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 @keyframes pulse-dot { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
-.pulse {
-  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
-  background: #00C9A7; animation: pulse-dot 1.4s ease-in-out infinite;
-  margin-right: 6px; vertical-align: middle;
-}
+.pulse { display:inline-block;width:7px;height:7px;border-radius:50%;background:#00C9A7;animation:pulse-dot 1.4s ease-in-out infinite;margin-right:6px;vertical-align:middle; }
 
 /* ══ RISK COLOURS ══════════════════════════════════════════════════════ */
-.r-low  { color: #34d399 !important; }
-.r-mod  { color: #00C9A7 !important; }
-.r-high { color: #d4a942 !important; }
-.r-elev { color: #cf7b2e !important; }
-.r-crit { color: #d94545 !important; font-weight: 700; }
+.r-low{color:#34d399!important} .r-mod{color:#00C9A7!important} .r-high{color:#d4a942!important} .r-elev{color:#cf7b2e!important} .r-crit{color:#d94545!important;font-weight:700}
 
-/* ══ AGENT STATUS CARDS ════════════════════════════════════════════════ */
+/* ══ AGENT CARDS ═══════════════════════════════════════════════════════ */
 .ag {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 14px; border-radius: 10px;
-  background: rgba(0,201,167,0.03);
-  border: 1px solid rgba(0,201,167,0.08);
-  margin-bottom: 5px; font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
+  display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;
+  background:rgba(4,13,18,0.6);border:1px solid rgba(0,201,167,0.08);
+  margin-bottom:6px;font-family:'DM Sans',sans-serif;
+  transition: all 0.25s ease;
 }
-.ag-n  { font-weight: 500; color: #e8f4f1; min-width: 130px; }
-.ag-t  { color: rgba(232,244,241,0.35); flex: 1; font-size: 12px; }
-.ag .done { color: #34d399; font-size: 11px; }
-.ag .work { color: #00C9A7; font-size: 11px; }
-.ag .wait { color: rgba(232,244,241,0.25); font-size: 11px; }
+.ag:hover { border-color:rgba(0,201,167,0.18); background:rgba(0,201,167,0.03); }
+.ag-n{font-weight:500;color:#e8f4f1;min-width:130px;font-size:13px}
+.ag-t{color:rgba(232,244,241,0.3);flex:1;font-size:12px}
+.ag .done{color:#34d399;font-size:11px;font-family:'JetBrains Mono',monospace}
+.ag .work{color:#00C9A7;font-size:11px}
+.ag .wait{color:rgba(232,244,241,0.2);font-size:11px}
 
-/* ══ PROGRESS BAR ══════════════════════════════════════════════════════ */
-.pbar {
-  background: rgba(0,201,167,0.05); border: 1px solid rgba(0,201,167,0.08);
-  border-radius: 100px; height: 4px; overflow: hidden; margin-top: 10px;
+/* ══ PROGRESS ══════════════════════════════════════════════════════════ */
+.pbar{background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.06);border-radius:100px;height:3px;overflow:hidden;margin-top:12px}
+.pfill{height:100%;background:linear-gradient(90deg,#00C9A7,#6ee7b0);border-radius:100px;transition:width 1s cubic-bezier(0.4,0,0.2,1);
+  box-shadow:0 0 8px rgba(0,201,167,0.3);
 }
-.pfill { height: 100%; background: #00C9A7; border-radius: 100px; transition: width 0.8s ease; }
 
 /* ══ DIVIDER ═══════════════════════════════════════════════════════════ */
-.divider {
-  height: 1px; margin: 28px 0;
-  background: linear-gradient(90deg, transparent, rgba(0,201,167,0.10), transparent);
-}
+.divider{height:1px;margin:32px 0;background:linear-gradient(90deg,transparent 5%,rgba(0,201,167,0.10) 50%,transparent 95%)}
 
 /* ══ FILE UPLOAD ═══════════════════════════════════════════════════════ */
-.gr-file {
-  background: rgba(0,201,167,0.03) !important;
-  border: 1px solid rgba(0,201,167,0.10) !important;
-  border-radius: 10px !important;
-  min-height: auto !important; max-height: 56px !important;
-}
-.gr-file .wrap { min-height: auto !important; padding: 8px !important; }
+.gr-file{background:rgba(4,13,18,0.5)!important;border:1px solid rgba(0,201,167,0.08)!important;border-radius:10px!important;min-height:auto!important;max-height:52px!important}
+.gr-file .wrap{min-height:auto!important;padding:8px!important}
 
 /* ══ RESPONSIVE ════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  .tt:hover::after { width: 200px; font-size: 11px; }
-}
+@media(max-width:768px){.tt:hover::after{width:200px;font-size:11px}}
 """
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -509,7 +504,7 @@ Behind the scenes: **FAISS** semantic search over 291 regulatory documents + **M
 ---
 
 <div style="text-align:center;margin-top:20px;color:var(--txt3);font-size:12px">
-CryptoComply by Arjit Mathur<br>
+Aegis by Arjit Mathur<br>
 MiCA \u00b7 FATF 2025 \u00b7 SEC Project Crypto \u00b7 MAS DTSP 2025 \u00b7 FCA \u00b7 VARA
 </div>
 """
@@ -761,32 +756,62 @@ def _fmt(r):
 # HERO HTML (inline SVG shield + breathing animation)
 # ═══════════════════════════════════════════════════════════════════════════
 HERO_HTML = """
-<div id="aurora"><div class="blob1"></div><div class="blob2"></div></div>
-<div style="text-align:center;padding:48px 20px 10px;position:relative;z-index:1;">
-  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px;">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="animation:breathe 3s ease-in-out infinite;">
+<div id="aurora"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
+<div id="grid"></div>
+<div style="text-align:center;padding:60px 20px 16px;position:relative;z-index:1;">
+
+  <!-- Shield icon with glow -->
+  <div style="margin-bottom:16px;">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="animation:breathe 3s ease-in-out infinite,float 6s ease-in-out infinite;">
+      <defs>
+        <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#00C9A7;stop-opacity:0.25"/>
+          <stop offset="100%" style="stop-color:#00C9A7;stop-opacity:0.05"/>
+        </linearGradient>
+      </defs>
       <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"
-            fill="rgba(0,201,167,0.15)" stroke="#00C9A7" stroke-width="1.5"/>
+            fill="url(#sg)" stroke="#00C9A7" stroke-width="1.2"/>
       <path d="M10 12l2 2 4-4" stroke="#00C9A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:28px;color:#fff;">CryptoComply</span>
   </div>
-  <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:rgba(0,201,167,0.7);">
-    Regulatory intelligence for crypto businesses
+
+  <!-- Brand -->
+  <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:36px;color:#ffffff;letter-spacing:-0.5px;">
+    Aegis
   </div>
-  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:rgba(232,244,241,0.3);margin-top:8px;">
-    MiCA &middot; SEC &middot; MAS &middot; FCA &middot; VARA &middot; FATF
+  <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:rgba(0,201,167,0.65);margin-top:4px;">
+    AI-powered regulatory intelligence for crypto businesses
   </div>
-  <div style="height:1px;background:rgba(0,201,167,0.1);margin:20px auto 0;max-width:500px;"></div>
+
+  <!-- Framework badges -->
+  <div style="display:flex;gap:6px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">MiCA</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">SEC</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">MAS</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">FCA</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">VARA</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">FATF</span>
+  </div>
+
+  <!-- Gradient divider -->
+  <div style="height:1px;margin:28px auto 0;max-width:400px;
+    background:linear-gradient(90deg,transparent,rgba(0,201,167,0.15),transparent);"></div>
 </div>
 """
 
 DEMO_BANNER_HTML = (
-    '<div style="background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);'
-    'border-radius:10px;padding:12px 18px;margin:0 auto 16px;max-width:640px;'
-    'color:rgba(232,244,241,0.8);font-size:13px;font-family:\'DM Sans\',sans-serif;text-align:center;">'
-    'Demo mode \u2014 HF_TOKEN not set. Summaries use templates. '
-    'Set HF_TOKEN in Space settings for full AI analysis.'
+    '<div style="background:rgba(0,201,167,0.05);border:1px solid rgba(0,201,167,0.12);'
+    'border-radius:12px;padding:12px 20px;margin:0 auto 20px;max-width:600px;'
+    'color:rgba(232,244,241,0.6);font-size:13px;font-family:\'DM Sans\',sans-serif;text-align:center;'
+    'backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">'
+    '<span style="color:#00C9A7;">Demo mode</span> \u2014 '
+    'HF_TOKEN not set. Set it in Space settings for full AI-generated analysis.'
     '</div>'
 )
 
@@ -794,7 +819,7 @@ DEMO_BANNER_HTML = (
 # BUILD UI
 # ═══════════════════════════════════════════════════════════════════════════
 
-with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="CryptoComply") as demo:
+with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Compliance Intelligence") as demo:
 
     # ── HERO ──
     gr.HTML(HERO_HTML)
@@ -807,11 +832,14 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="CryptoComply") as demo:
 
     # ── INPUT SECTION ──
     gr.HTML(
-        '<div style="font-family:\'Sora\',sans-serif;font-size:20px;font-weight:600;'
-        'color:#e8f4f1;margin:24px 0 2px;">Tell us about your business</div>'
+        '<div style="margin:20px 0 4px;">'
+        '  <span style="font-family:\'Sora\',sans-serif;font-size:18px;font-weight:600;color:#e8f4f1;">'
+        '    Tell us about your business'
+        '  </span>'
+        '</div>'
         '<div style="font-family:\'DM Sans\',sans-serif;font-size:13px;'
-        'color:rgba(232,244,241,0.45);margin-bottom:16px;">'
-        'Write in plain language \u2014 no legal knowledge needed</div>'
+        'color:rgba(232,244,241,0.35);margin-bottom:18px;">'
+        'Describe what you do in plain language \u2014 no legal knowledge needed</div>'
     )
 
     biz_in = gr.Textbox(
@@ -868,22 +896,23 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="CryptoComply") as demo:
     gr.HTML('<div class="divider" style="margin-top:40px;"></div>')
     with gr.Accordion("Quick reference \u2014 jurisdictions, thresholds, Howey Test", open=False):
         gr.Markdown(QUICK_REF)
-    with gr.Accordion("About CryptoComply", open=False):
+    with gr.Accordion("About Aegis", open=False):
         gr.Markdown(ABOUT_MD)
 
     # ── FOOTER ──
     gr.HTML(
-        '<div style="text-align:center;padding:40px 20px 24px;">'
-        '<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:4px;">'
-        '  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">'
-        '    <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"'
-        '          fill="none" stroke="rgba(0,201,167,0.4)" stroke-width="1.5"/>'
-        '  </svg>'
-        '  <span style="font-family:\'Sora\',sans-serif;font-weight:600;font-size:13px;'
-        '  color:rgba(232,244,241,0.5);">CryptoComply</span>'
-        '</div>'
-        '<div style="font-family:\'DM Sans\',sans-serif;font-size:11px;color:rgba(232,244,241,0.2);">'
-        'by Arjit Mathur &middot; MiCA &middot; FATF 2025 &middot; SEC &middot; MAS &middot; FCA &middot; VARA</div>'
+        '<div style="text-align:center;padding:48px 20px 32px;">'
+        '  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px;">'
+        '    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">'
+        '      <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"'
+        '            fill="none" stroke="rgba(0,201,167,0.3)" stroke-width="1.2"/>'
+        '    </svg>'
+        '    <span style="font-family:\'Sora\',sans-serif;font-weight:600;font-size:13px;color:rgba(232,244,241,0.4);">Aegis</span>'
+        '  </div>'
+        '  <div style="font-family:\'DM Sans\',sans-serif;font-size:11px;color:rgba(232,244,241,0.18);">'
+        '    by Arjit Mathur</div>'
+        '  <div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:rgba(232,244,241,0.12);margin-top:6px;letter-spacing:1px;">'
+        '    MiCA &middot; FATF &middot; SEC &middot; MAS &middot; FCA &middot; VARA</div>'
         '</div>'
     )
 
