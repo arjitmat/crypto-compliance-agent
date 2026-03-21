@@ -70,123 +70,256 @@ def glossarise(text: str) -> str:
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# FONTS
+# FONTS  — loaded via @import inside CSS, no separate HTML tag needed
 # ═══════════════════════════════════════════════════════════════════════════
-FONT_LINK = (
-    '<link rel="preconnect" href="https://fonts.googleapis.com">'
-    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-    '<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700'
-    '&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500'
-    '&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">'
-)
+FONT_LINK = ""  # empty — fonts loaded via @import in CUSTOM_CSS
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CSS — Deep forest glassmorphism with sage-teal accents
 # ═══════════════════════════════════════════════════════════════════════════
-CUSTOM_CSS = r"""
-:root{
-  --bg:#060e0b;--s1:#0a1610;--s2:#0f1f17;
-  --g:rgba(62,178,127,.05);--gb:rgba(62,178,127,.14);--gh:rgba(62,178,127,.26);
-  --a:#3eb27f;--ad:#276b4e;--al:#6ee7b0;
-  --gold:#d4a942;--amber:#cf7b2e;--red:#d94545;--green:#34d399;
-  --t1:#dceee5;--t2:rgba(220,238,229,.50);--t3:rgba(220,238,229,.25);
-  --mono:'JetBrains Mono',monospace;--head:'Sora',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
+CUSTOM_CSS = """
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ══ BASE ══════════════════════════════════════════════════════════════ */
+body, .gradio-container, .main, .wrap, .contain {
+  background: #040d12 !important;
+  color: #e8f4f1 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  min-height: 100vh;
+}
+.gradio-container { max-width: 880px !important; margin: 0 auto !important; }
+
+h1, h2, h3, .prose h1, .prose h2, .prose h3 {
+  font-family: 'Sora', sans-serif !important;
+  color: #e8f4f1 !important;
+  font-weight: 600 !important;
 }
 
-/* ── BASE ── */
-body,.gradio-container,.main,.wrap,.contain{background:var(--bg)!important;color:var(--t1)!important;font-family:var(--body)!important}
-.gradio-container{max-width:860px!important;margin:0 auto!important;position:relative}
-/* aurora */
-.gradio-container::before,.gradio-container::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(150px);opacity:.08}
-.gradio-container::before{width:800px;height:800px;background:radial-gradient(circle,#3eb27f,transparent 70%);top:-280px;right:-220px;animation:dr 80s ease-in-out infinite alternate}
-.gradio-container::after{width:600px;height:600px;background:radial-gradient(circle,#1a5c3a,transparent 70%);bottom:-180px;left:-180px;animation:dr 80s ease-in-out infinite alternate-reverse}
-@keyframes dr{0%{transform:translate(0,0)}100%{transform:translate(60px,-40px)}}
+/* ══ SCROLLBAR ═════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,201,167,0.2); border-radius: 2px; }
 
-/* ── GLASS ── */
-.glass{background:rgba(62,178,127,.04)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border:1px solid var(--gb)!important;border-radius:16px!important;transition:border-color .3s,box-shadow .3s}
-.glass:hover{border-color:var(--gh)!important;box-shadow:0 0 30px rgba(62,178,127,.05)}
-
-/* ── INPUTS ── */
-.gr-panel,.gr-box,.gr-form{background:transparent!important;border:none!important}
-textarea,input[type="text"],.gr-textbox textarea{
-  background:rgba(10,22,16,.7)!important;border:1px solid var(--gb)!important;border-radius:12px!important;
-  color:var(--t1)!important;font-family:var(--body)!important;font-size:15px!important;
-  padding:14px 16px!important;line-height:1.55!important;
+/* ══ AURORA (injected via #aurora div) ═════════════════════════════════ */
+#aurora { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+#aurora .blob1 {
+  position: absolute; top: -120px; right: -100px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.06), transparent 70%);
+  animation: drift1 25s ease-in-out infinite;
 }
-textarea:focus,input[type="text"]:focus{border-color:var(--a)!important;box-shadow:0 0 0 3px rgba(62,178,127,.12)!important;outline:none!important}
-textarea::placeholder{color:var(--t3)!important}
-label,span.svelte-1gfkn6j{color:var(--t2)!important;font-family:var(--body)!important;font-weight:500!important;font-size:13px!important}
-
-/* ── CHECKBOXES — hide native box, pill style ── */
-.gr-check-radio{display:flex!important;flex-wrap:wrap!important;gap:7px!important}
-.gr-check-radio label{background:rgba(10,22,16,.6)!important;border:1px solid var(--gb)!important;border-radius:100px!important;padding:8px 18px!important;font-size:13px!important;cursor:pointer;transition:all .25s!important}
-.gr-check-radio label:hover{border-color:var(--gh)!important;background:rgba(62,178,127,.06)!important}
-.gr-check-radio label:has(input:checked){background:rgba(62,178,127,.15)!important;border-color:var(--a)!important;color:var(--al)!important;box-shadow:0 0 12px rgba(62,178,127,.10)}
-.gr-check-radio input[type="checkbox"]{display:none!important}
-
-/* ── BUTTON — outlined, not filled ── */
-.cta-btn,.gr-button-primary{
-  background:transparent!important;color:var(--a)!important;
-  font-family:var(--body)!important;font-weight:600!important;font-size:15px!important;
-  border:1.5px solid var(--a)!important;border-radius:12px!important;
-  padding:14px 32px!important;cursor:pointer;letter-spacing:.02em;transition:all .3s!important;
+#aurora .blob2 {
+  position: absolute; bottom: -100px; left: -80px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.04), transparent 70%);
+  animation: drift2 30s ease-in-out infinite;
 }
-.cta-btn:hover,.gr-button-primary:hover{
-  background:var(--a)!important;color:var(--bg)!important;
-  box-shadow:0 6px 30px rgba(62,178,127,.22)!important;transform:translateY(-1px)!important;
+@keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-60px,40px)} }
+@keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-50px)} }
+
+/* ══ GLASS CARDS ═══════════════════════════════════════════════════════ */
+.glass, .gr-group, .gradio-group {
+  background: rgba(0,201,167,0.04) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(0,201,167,0.12) !important;
+  border-radius: 16px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.glass:hover, .gr-group:hover {
+  border-color: rgba(0,201,167,0.22) !important;
+  box-shadow: 0 8px 32px rgba(0,201,167,0.08) !important;
 }
 
-/* ── ACCORDION ── */
-.gr-accordion{background:rgba(10,22,16,.4)!important;border:1px solid rgba(62,178,127,.10)!important;border-radius:14px!important;overflow:hidden;margin-bottom:8px!important}
-.gr-accordion .label-wrap{color:var(--t1)!important;font-family:var(--body)!important;font-size:14px!important}
+/* ══ TEXT INPUTS ════════════════════════════════════════════════════════ */
+.gr-panel, .gr-box, .gr-form { background: transparent !important; border: none !important; }
 
-/* ── MARKDOWN ── */
-.prose,.md,.markdown-text{color:var(--t1)!important;font-family:var(--body)!important;line-height:1.7!important}
-.prose h1,.prose h2,.prose h3,.md h1,.md h2,.md h3{font-family:var(--head)!important;color:var(--t1)!important;font-weight:600!important}
-.prose strong{color:var(--t1)!important}
-.prose table{border-collapse:collapse;width:100%}
-.prose th{background:rgba(62,178,127,.06);color:var(--a);padding:9px 12px;text-align:left;font-size:12px;font-weight:500;border-bottom:1px solid var(--gb)}
-.prose td{padding:9px 12px;border-bottom:1px solid rgba(62,178,127,.05);font-size:13px}
-.prose code{background:rgba(62,178,127,.07);padding:2px 7px;border-radius:5px;color:var(--al);font-family:var(--mono);font-size:12px}
+textarea, input[type="text"], .gr-textbox textarea {
+  background: rgba(0,0,0,0.3) !important;
+  border: 1px solid rgba(0,201,167,0.15) !important;
+  border-radius: 10px !important;
+  color: #e8f4f1 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 14px !important;
+  padding: 14px 16px !important;
+  line-height: 1.6 !important;
+  transition: border-color 0.2s ease !important;
+}
+textarea:focus, input[type="text"]:focus {
+  border-color: rgba(0,201,167,0.4) !important;
+  box-shadow: 0 0 0 3px rgba(0,201,167,0.08) !important;
+  outline: none !important;
+}
+textarea::placeholder { color: rgba(232,244,241,0.25) !important; }
 
-/* ── TOOLTIPS ── */
-.tt{color:var(--al);border-bottom:1px dotted rgba(62,178,127,.25);cursor:help;position:relative}
-.tt:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#091a12;border:1px solid var(--gb);color:var(--t1);font-size:12px;font-family:var(--body);line-height:1.5;padding:11px 14px;border-radius:11px;width:270px;z-index:999;pointer-events:none;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+/* ══ LABELS ════════════════════════════════════════════════════════════ */
+label, .gr-label, span.svelte-1gfkn6j {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13px !important;
+  color: rgba(232,244,241,0.6) !important;
+  letter-spacing: 0.2px !important;
+}
 
-/* ── ANIMATIONS ── */
-@keyframes su{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pd{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
-.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--a);animation:pd 1.4s ease-in-out infinite;margin-right:6px;vertical-align:middle}
+/* ══ CHECKBOXES — glass pills ══════════════════════════════════════════ */
+.gr-check-radio, .gr-checkbox-group { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
 
-/* ── RISK ── */
-.r-low{color:var(--green)!important}.r-mod{color:var(--a)!important}.r-high{color:var(--gold)!important}.r-elev{color:var(--amber)!important}.r-crit{color:var(--red)!important;font-weight:700}
+.gr-check-radio label, .gr-checkbox-group label {
+  background: rgba(0,201,167,0.05) !important;
+  border: 1px solid rgba(0,201,167,0.15) !important;
+  border-radius: 20px !important;
+  padding: 6px 14px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13px !important;
+  color: rgba(232,244,241,0.7) !important;
+}
+.gr-check-radio label:hover, .gr-checkbox-group label:hover {
+  border-color: rgba(0,201,167,0.3) !important;
+  background: rgba(0,201,167,0.08) !important;
+}
+.gr-check-radio label:has(input:checked), .gr-checkbox-group label:has(input:checked) {
+  background: rgba(0,201,167,0.15) !important;
+  border-color: #00C9A7 !important;
+  color: #00C9A7 !important;
+  box-shadow: 0 0 14px rgba(0,201,167,0.10);
+}
+.gr-check-radio input[type="checkbox"], .gr-checkbox-group input[type="checkbox"] {
+  display: none !important;
+}
 
-/* ── AGENT CARDS ── */
-.ag{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:rgba(10,22,16,.5);border:1px solid rgba(62,178,127,.08);margin-bottom:5px;font-size:13px}
-.ag-n{font-weight:500;color:var(--t1);min-width:130px;font-size:13px}
-.ag-t{color:var(--t3);flex:1;font-size:12px}
-.ag .done{color:var(--green);font-size:11px}.ag .work{color:var(--a);font-size:11px}.ag .wait{color:var(--t3);font-size:11px}
+/* ══ PRIMARY BUTTON ════════════════════════════════════════════════════ */
+.gr-button-primary {
+  background: transparent !important;
+  border: 1px solid #00C9A7 !important;
+  color: #00C9A7 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  border-radius: 12px !important;
+  padding: 14px 28px !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.gr-button-primary:hover {
+  background: rgba(0,201,167,0.1) !important;
+  box-shadow: 0 0 24px rgba(0,201,167,0.2) !important;
+  transform: translateY(-1px) !important;
+}
+.gr-button-primary:active { transform: translateY(0) !important; }
 
-/* ── PROGRESS ── */
-.pbar{background:rgba(62,178,127,.06);border:1px solid rgba(62,178,127,.08);border-radius:100px;height:4px;overflow:hidden;margin-top:10px}
-.pfill{height:100%;background:var(--a);border-radius:100px;transition:width .8s ease}
+/* ══ ACCORDIONS ════════════════════════════════════════════════════════ */
+.gr-accordion {
+  background: rgba(0,201,167,0.03) !important;
+  border: 1px solid rgba(0,201,167,0.1) !important;
+  border-radius: 12px !important;
+  margin-bottom: 8px !important;
+  overflow: hidden;
+}
+.gr-accordion > .label-wrap, .gr-accordion .label-wrap {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #e8f4f1 !important;
+  padding: 14px 18px !important;
+}
 
-/* ── DIVIDER ── */
-.divider{height:1px;margin:28px 0;background:linear-gradient(90deg,transparent,rgba(62,178,127,.12),transparent)}
+/* ══ MARKDOWN ══════════════════════════════════════════════════════════ */
+.prose, .md, .markdown-text {
+  color: #e8f4f1 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  line-height: 1.7 !important;
+}
+.prose strong { color: #e8f4f1 !important; }
+.prose table { border-collapse: collapse; width: 100%; }
+.prose th {
+  background: rgba(0,201,167,0.06); color: #00C9A7;
+  padding: 9px 12px; text-align: left;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  border-bottom: 1px solid rgba(0,201,167,0.12);
+}
+.prose td {
+  padding: 9px 12px; font-size: 13px;
+  border-bottom: 1px solid rgba(0,201,167,0.06);
+}
+.prose code {
+  background: rgba(0,201,167,0.07); padding: 2px 7px; border-radius: 5px;
+  color: #6ee7b0; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
 
-/* ── FILE UPLOAD — compact ── */
-.gr-file{background:rgba(10,22,16,.4)!important;border:1px solid rgba(62,178,127,.10)!important;border-radius:12px!important;min-height:auto!important;max-height:60px!important}
-.gr-file .wrap{min-height:auto!important;padding:10px!important}
+/* ══ TOOLTIPS ══════════════════════════════════════════════════════════ */
+.tt {
+  color: #6ee7b0; border-bottom: 1px dotted rgba(0,201,167,0.25);
+  cursor: help; position: relative;
+}
+.tt:hover::after {
+  content: attr(data-tip); position: absolute; bottom: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%); background: #071a14;
+  border: 1px solid rgba(0,201,167,0.15); color: #e8f4f1;
+  font-size: 12px; font-family: 'DM Sans', sans-serif; line-height: 1.5;
+  padding: 11px 14px; border-radius: 10px; width: 270px; z-index: 999;
+  pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
 
-/* ── HERO ── */
-.hero{text-align:center;padding:44px 20px 10px}
-.hero-mark{font-family:var(--head);font-weight:700;font-size:2.2em;color:var(--t1);display:flex;align-items:center;gap:12px;justify-content:center}
-.hero-mark .dot{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--a),#4cc990);display:inline-flex;align-items:center;justify-content:center;font-size:17px;color:var(--bg);box-shadow:0 3px 16px rgba(62,178,127,.20)}
-.hero-tag{font-family:var(--body);font-weight:300;font-size:.95em;color:var(--ad);margin-top:5px}
-.hero-frame{font-family:var(--mono);font-size:.72em;color:var(--t3);margin-top:6px;letter-spacing:.04em}
+/* ══ ANIMATIONS ════════════════════════════════════════════════════════ */
+@keyframes breathe { 0%,100%{opacity:0.8} 50%{opacity:1} }
+@keyframes pulse-dot { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+.pulse {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: #00C9A7; animation: pulse-dot 1.4s ease-in-out infinite;
+  margin-right: 6px; vertical-align: middle;
+}
 
-/* ── RESPONSIVE ── */
-@media(max-width:768px){.hero-mark{font-size:1.6em}.tt:hover::after{width:200px;font-size:11px}}
+/* ══ RISK COLOURS ══════════════════════════════════════════════════════ */
+.r-low  { color: #34d399 !important; }
+.r-mod  { color: #00C9A7 !important; }
+.r-high { color: #d4a942 !important; }
+.r-elev { color: #cf7b2e !important; }
+.r-crit { color: #d94545 !important; font-weight: 700; }
+
+/* ══ AGENT STATUS CARDS ════════════════════════════════════════════════ */
+.ag {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: 10px;
+  background: rgba(0,201,167,0.03);
+  border: 1px solid rgba(0,201,167,0.08);
+  margin-bottom: 5px; font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+}
+.ag-n  { font-weight: 500; color: #e8f4f1; min-width: 130px; }
+.ag-t  { color: rgba(232,244,241,0.35); flex: 1; font-size: 12px; }
+.ag .done { color: #34d399; font-size: 11px; }
+.ag .work { color: #00C9A7; font-size: 11px; }
+.ag .wait { color: rgba(232,244,241,0.25); font-size: 11px; }
+
+/* ══ PROGRESS BAR ══════════════════════════════════════════════════════ */
+.pbar {
+  background: rgba(0,201,167,0.05); border: 1px solid rgba(0,201,167,0.08);
+  border-radius: 100px; height: 4px; overflow: hidden; margin-top: 10px;
+}
+.pfill { height: 100%; background: #00C9A7; border-radius: 100px; transition: width 0.8s ease; }
+
+/* ══ DIVIDER ═══════════════════════════════════════════════════════════ */
+.divider {
+  height: 1px; margin: 28px 0;
+  background: linear-gradient(90deg, transparent, rgba(0,201,167,0.10), transparent);
+}
+
+/* ══ FILE UPLOAD ═══════════════════════════════════════════════════════ */
+.gr-file {
+  background: rgba(0,201,167,0.03) !important;
+  border: 1px solid rgba(0,201,167,0.10) !important;
+  border-radius: 10px !important;
+  min-height: auto !important; max-height: 56px !important;
+}
+.gr-file .wrap { min-height: auto !important; padding: 8px !important; }
+
+/* ══ RESPONSIVE ════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .tt:hover::after { width: 200px; font-size: 11px; }
+}
 """
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -513,41 +646,59 @@ def _fmt(r):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+# HERO HTML (inline SVG shield + breathing animation)
+# ═══════════════════════════════════════════════════════════════════════════
+HERO_HTML = """
+<div id="aurora"><div class="blob1"></div><div class="blob2"></div></div>
+<div style="text-align:center;padding:48px 20px 10px;position:relative;z-index:1;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px;">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="animation:breathe 3s ease-in-out infinite;">
+      <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"
+            fill="rgba(0,201,167,0.15)" stroke="#00C9A7" stroke-width="1.5"/>
+      <path d="M10 12l2 2 4-4" stroke="#00C9A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:28px;color:#fff;">CryptoComply</span>
+  </div>
+  <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:rgba(0,201,167,0.7);">
+    Regulatory intelligence for crypto businesses
+  </div>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:rgba(232,244,241,0.3);margin-top:8px;">
+    MiCA &middot; SEC &middot; MAS &middot; FCA &middot; VARA &middot; FATF
+  </div>
+  <div style="height:1px;background:rgba(0,201,167,0.1);margin:20px auto 0;max-width:500px;"></div>
+</div>
+"""
+
+DEMO_BANNER_HTML = (
+    '<div style="background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);'
+    'border-radius:10px;padding:12px 18px;margin:0 auto 16px;max-width:640px;'
+    'color:rgba(232,244,241,0.8);font-size:13px;font-family:\'DM Sans\',sans-serif;text-align:center;">'
+    'Demo mode \u2014 HF_TOKEN not set. Summaries use templates. '
+    'Set HF_TOKEN in Space settings for full AI analysis.'
+    '</div>'
+)
+
+# ═══════════════════════════════════════════════════════════════════════════
 # BUILD UI
 # ═══════════════════════════════════════════════════════════════════════════
 
 with gr.Blocks(theme=gr.themes.Base(), css=CUSTOM_CSS, title="CryptoComply") as demo:
-    gr.HTML(FONT_LINK)
 
     # ── HERO ──
-    gr.HTML(
-        '<div class="hero">'
-        '  <div class="hero-mark"><span class="dot">\u26e8</span>CryptoComply</div>'
-        '  <div class="hero-tag">Regulatory intelligence for crypto businesses</div>'
-        '  <div class="hero-frame">MiCA \u00b7 SEC \u00b7 MAS \u00b7 FCA \u00b7 VARA \u00b7 FATF</div>'
-        '</div>'
-        '<div class="divider"></div>'
-    )
+    gr.HTML(HERO_HTML)
 
     if DEMO_MODE:
-        gr.HTML(
-            '<div style="background:rgba(62,178,127,.05);border:1px solid rgba(62,178,127,.15);'
-            'border-radius:14px;padding:14px 20px;margin:0 auto 18px;max-width:680px;'
-            'color:var(--accent-d);font-size:13px;text-align:center">'
-            '\u26a0\ufe0f <strong>Demo mode</strong> \u2014 HF_TOKEN not set. '
-            'Summaries use templates. Set HF_TOKEN in Space settings for full AI analysis.'
-            '</div>'
-        )
+        gr.HTML(DEMO_BANNER_HTML)
 
-    with gr.Accordion("\u24d8 Disclaimer", open=False, elem_classes=["glass"]):
+    with gr.Accordion("Disclaimer", open=False):
         gr.Markdown(DISCLAIMER)
 
-    # ── INPUT ──
-    gr.HTML('<div style="height:16px"></div>')
+    # ── INPUT SECTION ──
     gr.HTML(
-        '<div style="font-family:var(--head);font-size:1.35em;font-weight:600;margin-bottom:2px">'
-        'Tell us about your business</div>'
-        '<div style="color:var(--txt2);font-size:14px;margin-bottom:16px">'
+        '<div style="font-family:\'Sora\',sans-serif;font-size:20px;font-weight:600;'
+        'color:#e8f4f1;margin:24px 0 2px;">Tell us about your business</div>'
+        '<div style="font-family:\'DM Sans\',sans-serif;font-size:13px;'
+        'color:rgba(232,244,241,0.45);margin-bottom:16px;">'
         'Write in plain language \u2014 no legal knowledge needed</div>'
     )
 
@@ -559,54 +710,68 @@ with gr.Blocks(theme=gr.themes.Base(), css=CUSTOM_CSS, title="CryptoComply") as 
         label="Do you have a token or digital asset? (optional)", lines=2,
         placeholder="Example: A utility token giving users lower trading fees. No profit rights, no voting\u2026",
     )
-    jx_in = gr.CheckboxGroup(label="Where do you want to operate?", choices=JURISDICTION_CHOICES, value=["European Union", "United States"])
-    gr.HTML('<div style="color:var(--txt3);font-size:12px;margin-top:-4px">Not sure? Select all \u2014 we\u2019ll tell you which apply.</div>')
-
+    jx_in = gr.CheckboxGroup(
+        label="Where do you want to operate?",
+        choices=JURISDICTION_CHOICES,
+        value=["European Union", "United States"],
+    )
+    gr.HTML(
+        '<div style="font-size:11px;color:rgba(232,244,241,0.25);margin-top:-2px;">'
+        'Not sure? Select all \u2014 we\u2019ll tell you which apply.</div>'
+    )
     act_in = gr.CheckboxGroup(label="What will your business do?", choices=ACTIVITY_CHOICES)
 
-    btn = gr.Button("Analyse my compliance requirements \u2192", variant="primary", size="lg", elem_classes=["cta-btn"])
+    btn = gr.Button("Analyse my compliance requirements \u2192", variant="primary", size="lg")
 
-    # ── ANALYSIS STATUS (compact) ──
+    # ── ANALYSIS STATUS ──
     gr.HTML('<div class="divider"></div>')
-    narr = gr.HTML('<span style="color:var(--t3);font-size:13px">&nbsp;</span>')
+    narr = gr.HTML('<span style="color:rgba(232,244,241,0.3);font-size:13px;">&nbsp;</span>')
     agents = gr.HTML("")
     pbar = gr.HTML("")
 
     # ── RESULTS ──
     risk_out = gr.HTML()
 
-    with gr.Accordion("Executive summary", open=True, elem_classes=["glass"]):
+    with gr.Accordion("Executive summary", open=True):
         sum_out = gr.Markdown()
-    with gr.Accordion("Jurisdiction analysis", open=False, elem_classes=["glass"]):
+    with gr.Accordion("Jurisdiction analysis", open=False):
         jx_out = gr.Markdown()
-    with gr.Accordion("Token classification", open=False, elem_classes=["glass"]):
+    with gr.Accordion("Token classification", open=False):
         tok_out = gr.Markdown()
-    with gr.Accordion("AML and identity verification", open=False, elem_classes=["glass"]):
+    with gr.Accordion("AML and identity verification", open=False):
         aml_out = gr.Markdown()
-    with gr.Accordion("Your licensing journey", open=False, elem_classes=["glass"]):
+    with gr.Accordion("Your licensing journey", open=False):
         lic_out = gr.Markdown()
-    with gr.Accordion("What to do next", open=False, elem_classes=["glass"]):
+    with gr.Accordion("What to do next", open=False):
         act_out = gr.Markdown()
-    with gr.Accordion("Similar enforcement cases", open=False, elem_classes=["glass"]):
+    with gr.Accordion("Similar enforcement cases", open=False):
         case_out = gr.Markdown()
 
     pdf_out = gr.File(label="PDF Report", visible=True)
 
-    with gr.Accordion("Full markdown report", open=False, elem_classes=["glass"]):
+    with gr.Accordion("Full markdown report", open=False):
         full_out = gr.Markdown()
 
     # ── REFERENCE & ABOUT ──
-    gr.HTML('<div class="divider" style="margin-top:48px"></div>')
-    with gr.Accordion("Quick reference \u2014 jurisdictions, thresholds, Howey Test", open=False, elem_classes=["glass"]):
+    gr.HTML('<div class="divider" style="margin-top:40px;"></div>')
+    with gr.Accordion("Quick reference \u2014 jurisdictions, thresholds, Howey Test", open=False):
         gr.Markdown(QUICK_REF)
-    with gr.Accordion("About CryptoComply", open=False, elem_classes=["glass"]):
+    with gr.Accordion("About CryptoComply", open=False):
         gr.Markdown(ABOUT_MD)
 
     # ── FOOTER ──
     gr.HTML(
-        '<div style="text-align:center;padding:44px 20px 28px;color:var(--txt3);font-size:12px">'
-        '<span style="font-family:var(--head);font-weight:600;color:var(--txt2)">\u26e8 CryptoComply</span> by Arjit Mathur<br>'
-        'MiCA \u00b7 FATF 2025 \u00b7 SEC Project Crypto \u00b7 MAS DTSP 2025 \u00b7 FCA \u00b7 VARA'
+        '<div style="text-align:center;padding:40px 20px 24px;">'
+        '<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:4px;">'
+        '  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">'
+        '    <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"'
+        '          fill="none" stroke="rgba(0,201,167,0.4)" stroke-width="1.5"/>'
+        '  </svg>'
+        '  <span style="font-family:\'Sora\',sans-serif;font-weight:600;font-size:13px;'
+        '  color:rgba(232,244,241,0.5);">CryptoComply</span>'
+        '</div>'
+        '<div style="font-family:\'DM Sans\',sans-serif;font-size:11px;color:rgba(232,244,241,0.2);">'
+        'by Arjit Mathur &middot; MiCA &middot; FATF 2025 &middot; SEC &middot; MAS &middot; FCA &middot; VARA</div>'
         '</div>'
     )
 
