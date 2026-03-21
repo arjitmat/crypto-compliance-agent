@@ -84,233 +84,109 @@ FONT_LINK = (
 # CSS — Deep forest glassmorphism with sage-teal accents
 # ═══════════════════════════════════════════════════════════════════════════
 CUSTOM_CSS = r"""
-/* ── PALETTE ──────────────────────────────────────── */
 :root{
-  --bg:       #060e0b;
-  --surface:  #0a1610;
-  --surface2: #0f1f17;
-  --glass:    rgba(62,178,127,0.045);
-  --glass-b:  rgba(62,178,127,0.13);
-  --glass-h:  rgba(62,178,127,0.22);
-  --accent:   #3eb27f;           /* sage-teal */
-  --accent-d: #276b4e;
-  --accent-l: #6ee7b0;
-  --gold:     #d4a942;
-  --amber:    #cf7b2e;
-  --red:      #d94545;
-  --green:    #34d399;
-  --txt:      #dceee5;
-  --txt2:     rgba(220,238,229,.52);
-  --txt3:     rgba(220,238,229,.28);
-  --mono:     'JetBrains Mono', monospace;
-  --head:     'Sora', system-ui, sans-serif;
-  --body:     'DM Sans', system-ui, sans-serif;
+  --bg:#060e0b;--s1:#0a1610;--s2:#0f1f17;
+  --g:rgba(62,178,127,.05);--gb:rgba(62,178,127,.14);--gh:rgba(62,178,127,.26);
+  --a:#3eb27f;--ad:#276b4e;--al:#6ee7b0;
+  --gold:#d4a942;--amber:#cf7b2e;--red:#d94545;--green:#34d399;
+  --t1:#dceee5;--t2:rgba(220,238,229,.50);--t3:rgba(220,238,229,.25);
+  --mono:'JetBrains Mono',monospace;--head:'Sora',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
 }
 
-/* ── BASE ─────────────────────────────────────────── */
-body,.gradio-container,.main,.wrap,.contain{
-  background:var(--bg)!important;color:var(--txt)!important;
-  font-family:var(--body)!important;
-}
-/* Aurora orbs */
-.gradio-container::before,.gradio-container::after{
-  content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;
-  filter:blur(140px);opacity:.09;
-}
-.gradio-container::before{
-  width:900px;height:900px;
-  background:radial-gradient(circle,#3eb27f 0%,transparent 70%);
-  top:-300px;right:-250px;
-  animation:drift 70s ease-in-out infinite alternate;
-}
-.gradio-container::after{
-  width:650px;height:650px;
-  background:radial-gradient(circle,#276b4e 0%,transparent 70%);
-  bottom:-200px;left:-200px;
-  animation:drift 70s ease-in-out infinite alternate-reverse;
-}
-@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(80px,-50px)}}
+/* ── BASE ── */
+body,.gradio-container,.main,.wrap,.contain{background:var(--bg)!important;color:var(--t1)!important;font-family:var(--body)!important}
+.gradio-container{max-width:860px!important;margin:0 auto!important;position:relative}
+/* aurora */
+.gradio-container::before,.gradio-container::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(150px);opacity:.08}
+.gradio-container::before{width:800px;height:800px;background:radial-gradient(circle,#3eb27f,transparent 70%);top:-280px;right:-220px;animation:dr 80s ease-in-out infinite alternate}
+.gradio-container::after{width:600px;height:600px;background:radial-gradient(circle,#1a5c3a,transparent 70%);bottom:-180px;left:-180px;animation:dr 80s ease-in-out infinite alternate-reverse}
+@keyframes dr{0%{transform:translate(0,0)}100%{transform:translate(60px,-40px)}}
 
-/* ── GLASS ────────────────────────────────────────── */
-.glass{
-  background:var(--glass)!important;
-  backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
-  border:1px solid var(--glass-b)!important;border-radius:18px!important;
-  transition:border-color .35s,box-shadow .35s;
-}
-.glass:hover{
-  border-color:var(--glass-h)!important;
-  box-shadow:0 0 40px rgba(62,178,127,.06);
-}
-@keyframes breathe{
-  0%,100%{box-shadow:0 0 18px rgba(62,178,127,.03)}
-  50%{box-shadow:0 0 36px rgba(62,178,127,.09)}
-}
-.glass-live{animation:breathe 4s ease-in-out infinite}
+/* ── GLASS ── */
+.glass{background:rgba(62,178,127,.04)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border:1px solid var(--gb)!important;border-radius:16px!important;transition:border-color .3s,box-shadow .3s}
+.glass:hover{border-color:var(--gh)!important;box-shadow:0 0 30px rgba(62,178,127,.05)}
 
-/* ── INPUTS ───────────────────────────────────────── */
+/* ── INPUTS ── */
 .gr-panel,.gr-box,.gr-form{background:transparent!important;border:none!important}
-textarea,input[type="text"],.gr-input,.gr-textbox textarea{
-  background:var(--glass)!important;
-  backdrop-filter:blur(14px)!important;
-  border:1px solid var(--glass-b)!important;border-radius:14px!important;
-  color:var(--txt)!important;font-family:var(--body)!important;font-size:15px!important;
-  padding:16px 18px!important;line-height:1.55!important;
+textarea,input[type="text"],.gr-textbox textarea{
+  background:rgba(10,22,16,.7)!important;border:1px solid var(--gb)!important;border-radius:12px!important;
+  color:var(--t1)!important;font-family:var(--body)!important;font-size:15px!important;
+  padding:14px 16px!important;line-height:1.55!important;
 }
-textarea:focus,input[type="text"]:focus{
-  border-color:var(--accent)!important;
-  box-shadow:0 0 0 3px rgba(62,178,127,.15)!important;outline:none!important;
-}
-textarea::placeholder{color:var(--txt3)!important}
-label,span.svelte-1gfkn6j{
-  color:var(--txt2)!important;font-family:var(--body)!important;
-  font-weight:500!important;font-size:14px!important;
-}
+textarea:focus,input[type="text"]:focus{border-color:var(--a)!important;box-shadow:0 0 0 3px rgba(62,178,127,.12)!important;outline:none!important}
+textarea::placeholder{color:var(--t3)!important}
+label,span.svelte-1gfkn6j{color:var(--t2)!important;font-family:var(--body)!important;font-weight:500!important;font-size:13px!important}
 
-/* ── PILL CHECKBOXES ──────────────────────────────── */
-.gr-check-radio{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
-.gr-check-radio label{
-  background:var(--glass)!important;border:1px solid var(--glass-b)!important;
-  border-radius:100px!important;padding:7px 18px!important;font-size:13px!important;
-  cursor:pointer;transition:all .25s!important;
-}
-.gr-check-radio label:hover{border-color:var(--glass-h)!important}
-.gr-check-radio label:has(input:checked){
-  background:rgba(62,178,127,.14)!important;border-color:var(--accent)!important;
-  color:var(--accent-l)!important;
-}
+/* ── CHECKBOXES — hide native box, pill style ── */
+.gr-check-radio{display:flex!important;flex-wrap:wrap!important;gap:7px!important}
+.gr-check-radio label{background:rgba(10,22,16,.6)!important;border:1px solid var(--gb)!important;border-radius:100px!important;padding:8px 18px!important;font-size:13px!important;cursor:pointer;transition:all .25s!important}
+.gr-check-radio label:hover{border-color:var(--gh)!important;background:rgba(62,178,127,.06)!important}
+.gr-check-radio label:has(input:checked){background:rgba(62,178,127,.15)!important;border-color:var(--a)!important;color:var(--al)!important;box-shadow:0 0 12px rgba(62,178,127,.10)}
+.gr-check-radio input[type="checkbox"]{display:none!important}
 
-/* ── CTA BUTTON ───────────────────────────────────── */
+/* ── BUTTON — outlined, not filled ── */
 .cta-btn,.gr-button-primary{
-  background:linear-gradient(135deg,var(--accent),#4cc990)!important;
-  color:#060e0b!important;font-family:var(--body)!important;font-weight:600!important;
-  font-size:16px!important;border:none!important;border-radius:14px!important;
-  padding:16px 36px!important;cursor:pointer;letter-spacing:.02em;
-  transition:all .3s!important;position:relative;overflow:hidden;
+  background:transparent!important;color:var(--a)!important;
+  font-family:var(--body)!important;font-weight:600!important;font-size:15px!important;
+  border:1.5px solid var(--a)!important;border-radius:12px!important;
+  padding:14px 32px!important;cursor:pointer;letter-spacing:.02em;transition:all .3s!important;
 }
 .cta-btn:hover,.gr-button-primary:hover{
-  transform:translateY(-2px)!important;
-  box-shadow:0 8px 40px rgba(62,178,127,.30)!important;
+  background:var(--a)!important;color:var(--bg)!important;
+  box-shadow:0 6px 30px rgba(62,178,127,.22)!important;transform:translateY(-1px)!important;
 }
-.cta-btn:active{transform:translateY(0)!important}
 
-/* ── ACCORDION ────────────────────────────────────── */
-.gr-accordion{
-  background:var(--glass)!important;border:1px solid var(--glass-b)!important;
-  border-radius:16px!important;overflow:hidden;margin-bottom:10px!important;
-}
-.gr-accordion .label-wrap{color:var(--txt)!important;font-family:var(--body)!important}
+/* ── ACCORDION ── */
+.gr-accordion{background:rgba(10,22,16,.4)!important;border:1px solid rgba(62,178,127,.10)!important;border-radius:14px!important;overflow:hidden;margin-bottom:8px!important}
+.gr-accordion .label-wrap{color:var(--t1)!important;font-family:var(--body)!important;font-size:14px!important}
 
-/* ── MARKDOWN ─────────────────────────────────────── */
-.prose,.md,.markdown-text{
-  color:var(--txt)!important;font-family:var(--body)!important;line-height:1.7!important;
-}
-.prose h1,.prose h2,.prose h3,.md h1,.md h2,.md h3{
-  font-family:var(--head)!important;color:var(--txt)!important;font-weight:600!important;
-}
-.prose strong{color:var(--txt)!important}
+/* ── MARKDOWN ── */
+.prose,.md,.markdown-text{color:var(--t1)!important;font-family:var(--body)!important;line-height:1.7!important}
+.prose h1,.prose h2,.prose h3,.md h1,.md h2,.md h3{font-family:var(--head)!important;color:var(--t1)!important;font-weight:600!important}
+.prose strong{color:var(--t1)!important}
 .prose table{border-collapse:collapse;width:100%}
-.prose th{
-  background:rgba(62,178,127,.07);color:var(--accent);padding:10px 14px;text-align:left;
-  font-family:var(--body);font-size:13px;font-weight:500;
-  border-bottom:1px solid var(--glass-b);
-}
-.prose td{padding:10px 14px;border-bottom:1px solid rgba(62,178,127,.06);font-size:13px}
-.prose code{
-  background:rgba(62,178,127,.08);padding:2px 8px;border-radius:6px;
-  color:var(--accent-l);font-family:var(--mono);font-size:13px;
-}
+.prose th{background:rgba(62,178,127,.06);color:var(--a);padding:9px 12px;text-align:left;font-size:12px;font-weight:500;border-bottom:1px solid var(--gb)}
+.prose td{padding:9px 12px;border-bottom:1px solid rgba(62,178,127,.05);font-size:13px}
+.prose code{background:rgba(62,178,127,.07);padding:2px 7px;border-radius:5px;color:var(--al);font-family:var(--mono);font-size:12px}
 
-/* ── TOOLTIPS ─────────────────────────────────────── */
-.tt{
-  color:var(--accent-l);border-bottom:1px dotted rgba(62,178,127,.30);
-  cursor:help;position:relative;
-}
-.tt:hover::after{
-  content:attr(data-tip);position:absolute;bottom:calc(100% + 10px);left:50%;
-  transform:translateX(-50%);background:#0c1d14;
-  border:1px solid var(--glass-b);color:var(--txt);font-size:12px;
-  font-family:var(--body);line-height:1.5;padding:12px 16px;border-radius:12px;
-  width:280px;z-index:999;pointer-events:none;
-  box-shadow:0 12px 40px rgba(0,0,0,.55);
-}
+/* ── TOOLTIPS ── */
+.tt{color:var(--al);border-bottom:1px dotted rgba(62,178,127,.25);cursor:help;position:relative}
+.tt:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#091a12;border:1px solid var(--gb);color:var(--t1);font-size:12px;font-family:var(--body);line-height:1.5;padding:11px 14px;border-radius:11px;width:270px;z-index:999;pointer-events:none;box-shadow:0 10px 40px rgba(0,0,0,.6)}
 
-/* ── ANIMATIONS ───────────────────────────────────── */
-@keyframes slide-up{
-  from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}
-}
-.reveal{animation:slide-up .55s ease-out both}
-@keyframes pulse-dot{
-  0%,100%{opacity:.35;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}
-}
-.pulse{
-  display:inline-block;width:8px;height:8px;border-radius:50%;
-  background:var(--accent);animation:pulse-dot 1.4s ease-in-out infinite;
-  margin-right:6px;vertical-align:middle;
-}
+/* ── ANIMATIONS ── */
+@keyframes su{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pd{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--a);animation:pd 1.4s ease-in-out infinite;margin-right:6px;vertical-align:middle}
 
-/* ── RISK COLOURS ─────────────────────────────────── */
-.r-low{color:var(--green)!important}
-.r-mod{color:var(--accent)!important}
-.r-high{color:var(--gold)!important}
-.r-elev{color:var(--amber)!important}
-.r-crit{color:var(--red)!important;font-weight:700}
+/* ── RISK ── */
+.r-low{color:var(--green)!important}.r-mod{color:var(--a)!important}.r-high{color:var(--gold)!important}.r-elev{color:var(--amber)!important}.r-crit{color:var(--red)!important;font-weight:700}
 
-/* ── AGENT CARDS ──────────────────────────────────── */
-.ag{
-  display:flex;align-items:center;gap:14px;padding:11px 16px;border-radius:12px;
-  background:var(--glass);border:1px solid var(--glass-b);margin-bottom:7px;font-size:14px;
-  transition:border-color .3s;
-}
-.ag:hover{border-color:var(--glass-h)}
-.ag-n{font-weight:500;color:var(--txt);min-width:140px}
-.ag-t{color:var(--txt2);flex:1}
-.ag .done{color:var(--green);font-size:12px}
-.ag .work{color:var(--accent);font-size:12px}
-.ag .wait{color:var(--txt3);font-size:12px}
+/* ── AGENT CARDS ── */
+.ag{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:rgba(10,22,16,.5);border:1px solid rgba(62,178,127,.08);margin-bottom:5px;font-size:13px}
+.ag-n{font-weight:500;color:var(--t1);min-width:130px;font-size:13px}
+.ag-t{color:var(--t3);flex:1;font-size:12px}
+.ag .done{color:var(--green);font-size:11px}.ag .work{color:var(--a);font-size:11px}.ag .wait{color:var(--t3);font-size:11px}
 
-/* ── PROGRESS ─────────────────────────────────────── */
-.pbar{
-  background:var(--glass);border:1px solid var(--glass-b);
-  border-radius:100px;height:5px;overflow:hidden;margin-top:14px;
-}
-.pfill{height:100%;background:var(--accent);border-radius:100px;transition:width .7s ease}
+/* ── PROGRESS ── */
+.pbar{background:rgba(62,178,127,.06);border:1px solid rgba(62,178,127,.08);border-radius:100px;height:4px;overflow:hidden;margin-top:10px}
+.pfill{height:100%;background:var(--a);border-radius:100px;transition:width .8s ease}
 
-/* ── DIVIDER ──────────────────────────────────────── */
-.divider{
-  height:1px;margin:36px 0;
-  background:linear-gradient(90deg,transparent,var(--glass-b),transparent);
-}
+/* ── DIVIDER ── */
+.divider{height:1px;margin:28px 0;background:linear-gradient(90deg,transparent,rgba(62,178,127,.12),transparent)}
 
-/* ── FILE ─────────────────────────────────────────── */
-.gr-file{background:var(--glass)!important;border:1px solid var(--glass-b)!important;border-radius:14px!important}
+/* ── FILE UPLOAD — compact ── */
+.gr-file{background:rgba(10,22,16,.4)!important;border:1px solid rgba(62,178,127,.10)!important;border-radius:12px!important;min-height:auto!important;max-height:60px!important}
+.gr-file .wrap{min-height:auto!important;padding:10px!important}
 
-/* ── HERO ─────────────────────────────────────────── */
-.hero{text-align:center;padding:52px 20px 12px}
-.hero-mark{
-  font-family:var(--head);font-weight:700;font-size:2.4em;
-  color:var(--txt);display:flex;align-items:center;gap:14px;justify-content:center;
-}
-.hero-mark .dot{
-  width:38px;height:38px;border-radius:10px;
-  background:linear-gradient(135deg,var(--accent),#4cc990);
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:18px;color:var(--bg);box-shadow:0 4px 20px rgba(62,178,127,.25);
-}
-.hero-tag{
-  font-family:var(--body);font-weight:300;font-size:1.05em;
-  color:var(--accent-d);margin-top:6px;
-}
-.hero-frame{
-  font-family:var(--mono);font-size:.76em;color:var(--txt3);
-  margin-top:8px;letter-spacing:.05em;
-}
+/* ── HERO ── */
+.hero{text-align:center;padding:44px 20px 10px}
+.hero-mark{font-family:var(--head);font-weight:700;font-size:2.2em;color:var(--t1);display:flex;align-items:center;gap:12px;justify-content:center}
+.hero-mark .dot{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--a),#4cc990);display:inline-flex;align-items:center;justify-content:center;font-size:17px;color:var(--bg);box-shadow:0 3px 16px rgba(62,178,127,.20)}
+.hero-tag{font-family:var(--body);font-weight:300;font-size:.95em;color:var(--ad);margin-top:5px}
+.hero-frame{font-family:var(--mono);font-size:.72em;color:var(--t3);margin-top:6px;letter-spacing:.04em}
 
-/* ── RESPONSIVE ───────────────────────────────────── */
-@media(max-width:768px){
-  .hero-mark{font-size:1.7em}
-  .tt:hover::after{width:200px;font-size:11px}
-}
+/* ── RESPONSIVE ── */
+@media(max-width:768px){.hero-mark{font-size:1.6em}.tt:hover::after{width:200px;font-size:11px}}
 """
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -690,36 +566,31 @@ with gr.Blocks(theme=gr.themes.Base(), css=CUSTOM_CSS, title="CryptoComply") as 
 
     btn = gr.Button("Analyse my compliance requirements \u2192", variant="primary", size="lg", elem_classes=["cta-btn"])
 
-    # ── ANALYSIS STATUS ──
+    # ── ANALYSIS STATUS (compact) ──
     gr.HTML('<div class="divider"></div>')
-    gr.HTML('<div style="font-family:var(--head);font-size:1.3em;font-weight:600;margin-bottom:6px">Analysis</div>')
-    narr = gr.HTML('<span style="color:var(--txt2);font-size:14px">Click the button above to start.</span>')
-    agents = gr.HTML(_agent_html())
-    pbar = gr.HTML(_pbar(0))
+    narr = gr.HTML('<span style="color:var(--t3);font-size:13px">&nbsp;</span>')
+    agents = gr.HTML("")
+    pbar = gr.HTML("")
 
     # ── RESULTS ──
-    gr.HTML('<div class="divider"></div>')
     risk_out = gr.HTML()
 
     with gr.Accordion("Executive summary", open=True, elem_classes=["glass"]):
         sum_out = gr.Markdown()
-    with gr.Accordion("Jurisdiction analysis", open=True, elem_classes=["glass"]):
+    with gr.Accordion("Jurisdiction analysis", open=False, elem_classes=["glass"]):
         jx_out = gr.Markdown()
-    with gr.Accordion("Token classification", open=True, elem_classes=["glass"]):
+    with gr.Accordion("Token classification", open=False, elem_classes=["glass"]):
         tok_out = gr.Markdown()
-    with gr.Accordion("AML and identity verification", open=True, elem_classes=["glass"]):
+    with gr.Accordion("AML and identity verification", open=False, elem_classes=["glass"]):
         aml_out = gr.Markdown()
+    with gr.Accordion("Your licensing journey", open=False, elem_classes=["glass"]):
+        lic_out = gr.Markdown()
+    with gr.Accordion("What to do next", open=False, elem_classes=["glass"]):
+        act_out = gr.Markdown()
     with gr.Accordion("Similar enforcement cases", open=False, elem_classes=["glass"]):
         case_out = gr.Markdown()
-    with gr.Accordion("Your licensing journey", open=True, elem_classes=["glass"]):
-        lic_out = gr.Markdown()
-    with gr.Accordion("What to do next", open=True, elem_classes=["glass"]):
-        act_out = gr.Markdown()
 
-    gr.HTML('<div class="divider"></div>')
-    gr.HTML('<div style="font-family:var(--head);font-size:1.1em;font-weight:600;margin-bottom:8px">Download report</div>')
-    pdf_out = gr.File(label="PDF Compliance Report")
-    gr.HTML('<div style="color:var(--txt3);font-size:12px;margin-top:4px">General information only. Always consult qualified legal counsel.</div>')
+    pdf_out = gr.File(label="PDF Report", visible=True)
 
     with gr.Accordion("Full markdown report", open=False, elem_classes=["glass"]):
         full_out = gr.Markdown()
