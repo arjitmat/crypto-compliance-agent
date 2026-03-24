@@ -33,7 +33,7 @@ class ReportBuilder:
         now = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
         s = []  # sections
-        s.append("# Aegis Compliance Intelligence Report")
+        s.append("# Aegis \u2014 Compliance Intelligence Report")
         s.append(f"*Generated: {now}*\n")
 
         # 1. Executive Summary
@@ -378,6 +378,19 @@ class _AegisPDF(FPDF):
 
     @staticmethod
     def _safe(text: str) -> str:
+        # Replace common unicode chars with latin-1 equivalents before encoding
+        text = text.replace("\u2014", " - ")   # em-dash
+        text = text.replace("\u2013", "-")      # en-dash
+        text = text.replace("\u2019", "'")       # right single quote
+        text = text.replace("\u2018", "'")       # left single quote
+        text = text.replace("\u201c", '"')       # left double quote
+        text = text.replace("\u201d", '"')       # right double quote
+        text = text.replace("\u2026", "...")      # ellipsis
+        text = text.replace("\u2022", "-")        # bullet
+        text = text.replace("\u00b7", "-")        # middle dot
+        text = text.replace("\u2192", "->")       # right arrow
+        text = text.replace("\u26a0\ufe0f", "[!]") # warning emoji
+        text = text.replace("\u2713", "[ok]")     # checkmark
         return text.encode("latin-1", "replace").decode("latin-1")
 
     def _heading(self, text: str):

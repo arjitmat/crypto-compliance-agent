@@ -219,25 +219,24 @@ label, .gr-label, span.svelte-1gfkn6j {
 
 /* ══ PRIMARY BUTTON — outlined CTA with glow on hover ════════════════ */
 .gr-button-primary {
-  background: rgba(0,201,167,0.06) !important;
-  border: 1px solid rgba(0,201,167,0.35) !important;
-  color: #00C9A7 !important;
+  background: #00C9A7 !important;
+  border: none !important;
+  color: #040d12 !important;
   font-family: 'DM Sans', sans-serif !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   font-size: 15px !important;
   border-radius: 12px !important;
   padding: 16px 32px !important;
   letter-spacing: 0.3px !important;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
 }
 .gr-button-primary:hover {
-  background: rgba(0,201,167,0.14) !important;
-  border-color: #00C9A7 !important;
-  box-shadow: 0 0 36px rgba(0,201,167,0.18), 0 4px 24px rgba(0,201,167,0.12) !important;
+  background: #00ddb8 !important;
+  box-shadow: 0 6px 30px rgba(0,201,167,0.3), 0 2px 10px rgba(0,201,167,0.15) !important;
   transform: translateY(-2px) !important;
 }
-.gr-button-primary:active { transform: translateY(0) !important; box-shadow: none !important; }
+.gr-button-primary:active { transform: translateY(0) !important; box-shadow: 0 2px 10px rgba(0,201,167,0.2) !important; }
 
 /* ══ ACCORDIONS ════════════════════════════════════════════════════════ */
 .gr-accordion {
@@ -602,20 +601,20 @@ THEME = gr.themes.Base(
     input_shadow_focus="0 0 0 3px rgba(0,201,167,0.08)",
     input_shadow_focus_dark="0 0 0 3px rgba(0,201,167,0.08)",
 
-    # Buttons
-    button_primary_background_fill="transparent",
-    button_primary_background_fill_dark="transparent",
-    button_primary_background_fill_hover="rgba(0,201,167,0.12)",
-    button_primary_background_fill_hover_dark="rgba(0,201,167,0.12)",
-    button_primary_text_color="#00C9A7",
-    button_primary_text_color_dark="#00C9A7",
-    button_primary_text_color_hover="#00C9A7",
-    button_primary_text_color_hover_dark="#00C9A7",
+    # Buttons — solid teal fill so it's unmissable
+    button_primary_background_fill="#00C9A7",
+    button_primary_background_fill_dark="#00C9A7",
+    button_primary_background_fill_hover="#00ddb8",
+    button_primary_background_fill_hover_dark="#00ddb8",
+    button_primary_text_color="#040d12",
+    button_primary_text_color_dark="#040d12",
+    button_primary_text_color_hover="#040d12",
+    button_primary_text_color_hover_dark="#040d12",
     button_primary_border_color="#00C9A7",
     button_primary_border_color_dark="#00C9A7",
-    button_primary_border_color_hover="#00C9A7",
-    button_primary_border_color_hover_dark="#00C9A7",
-    button_border_width="1px",
+    button_primary_border_color_hover="#00ddb8",
+    button_primary_border_color_hover_dark="#00ddb8",
+    button_border_width="0px",
     button_shadow="none",
     button_shadow_hover="0 0 24px rgba(0,201,167,0.15)",
     button_shadow_active="none",
