@@ -572,10 +572,10 @@ THEME = gr.themes.Base(
     background_fill_primary_dark="#040d12",
     background_fill_secondary="#071a14",
     background_fill_secondary_dark="#071a14",
-    block_background_fill="rgba(0,201,167,0.03)",
-    block_background_fill_dark="rgba(0,201,167,0.03)",
-    block_border_color="rgba(0,201,167,0.10)",
-    block_border_color_dark="rgba(0,201,167,0.10)",
+    block_background_fill="#0a1a1f",
+    block_background_fill_dark="#0a1a1f",
+    block_border_color="rgba(0,201,167,0.18)",
+    block_border_color_dark="rgba(0,201,167,0.18)",
     block_label_text_color="rgba(232,244,241,0.6)",
     block_label_text_color_dark="rgba(232,244,241,0.6)",
     block_label_background_fill="transparent",
@@ -588,10 +588,10 @@ THEME = gr.themes.Base(
     block_border_width="1px",
 
     # Inputs
-    input_background_fill="rgba(0,0,0,0.3)",
-    input_background_fill_dark="rgba(0,0,0,0.3)",
-    input_border_color="rgba(0,201,167,0.15)",
-    input_border_color_dark="rgba(0,201,167,0.15)",
+    input_background_fill="#060f14",
+    input_background_fill_dark="#060f14",
+    input_border_color="rgba(0,201,167,0.20)",
+    input_border_color_dark="rgba(0,201,167,0.20)",
     input_border_color_focus="rgba(0,201,167,0.4)",
     input_border_color_focus_dark="rgba(0,201,167,0.4)",
     input_placeholder_color="rgba(232,244,241,0.25)",
@@ -776,63 +776,98 @@ def _fmt(r):
 # HERO HTML — #amb aurora container + floating shield + brand
 # ═══════════════════════════════════════════════════════════════════════════
 HERO_HTML = """
-<div id="amb">
-  <div class="orb1"></div>
-  <div class="orb2"></div>
-  <div class="orb3"></div>
-  <div class="grid"></div>
-  <div class="noise"></div>
+<!-- AMBIENT BACKGROUND — visible aurora orbs + grid -->
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+  <div style="position:absolute;top:-200px;right:-150px;width:800px;height:800px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,201,167,0.15) 0%,rgba(0,201,167,0.03) 40%,transparent 70%);
+    animation:od1 20s ease-in-out infinite"></div>
+  <div style="position:absolute;bottom:-150px;left:-100px;width:650px;height:650px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,180,150,0.10) 0%,transparent 70%);
+    animation:od2 26s ease-in-out infinite"></div>
+  <div style="position:absolute;top:30%;left:60%;width:400px;height:400px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,201,167,0.06) 0%,transparent 60%);
+    animation:od3 32s ease-in-out infinite"></div>
 </div>
-<div style="text-align:center;padding:60px 20px 16px;position:relative;z-index:1;">
+<style>
+@keyframes od1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-80px,60px) scale(1.08)}}
+@keyframes od2{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,-50px)}}
+@keyframes od3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,40px) scale(1.12)}}
+@keyframes hero-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shield-glow{0%,100%{filter:drop-shadow(0 0 12px rgba(0,201,167,0.3))}50%{filter:drop-shadow(0 0 28px rgba(0,201,167,0.6))}}
+@keyframes shield-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
 
-  <!-- Shield icon with gradient fill, breathe + float animation -->
-  <div style="margin-bottom:16px;">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="animation:breathe 3s ease-in-out infinite,float 6s ease-in-out infinite;">
+<!-- HERO CONTENT -->
+<div style="text-align:center;padding:56px 20px 20px;position:relative;z-index:1;animation:hero-in 0.8s ease-out">
+
+  <!-- Shield SVG — large, glowing, floating -->
+  <div style="margin-bottom:20px;animation:shield-float 5s ease-in-out infinite">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" style="animation:shield-glow 3s ease-in-out infinite">
       <defs>
-        <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#00C9A7;stop-opacity:0.25"/>
-          <stop offset="100%" style="stop-color:#00C9A7;stop-opacity:0.05"/>
+        <linearGradient id="shg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#00C9A7" stop-opacity="0.1"/>
         </linearGradient>
       </defs>
       <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"
-            fill="url(#sg)" stroke="#00C9A7" stroke-width="1.2"/>
+            fill="url(#shg)" stroke="#00C9A7" stroke-width="1"/>
       <path d="M10 12l2 2 4-4" stroke="#00C9A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 
-  <!-- Brand -->
-  <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:36px;color:#ffffff;letter-spacing:-0.5px;">
+  <!-- Brand name — big, white, Sora -->
+  <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:42px;color:#ffffff;letter-spacing:-1px;
+    text-shadow:0 0 60px rgba(0,201,167,0.15)">
     Aegis
   </div>
-  <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:rgba(0,201,167,0.65);margin-top:4px;">
+
+  <!-- Tagline -->
+  <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:#00C9A7;margin-top:6px;opacity:0.7">
     AI-powered regulatory intelligence for crypto businesses
   </div>
 
-  <!-- Framework badges as individual glass pills -->
-  <div style="display:flex;gap:6px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
-      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">MiCA</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
-      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">SEC</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
-      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">MAS</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
-      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">FCA</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
-      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">VARA</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
-      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">FATF</span>
+  <!-- Framework badges — visible, with real contrast -->
+  <div style="display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#00C9A7;
+      background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.20);border-radius:100px;padding:5px 14px">MiCA</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#00C9A7;
+      background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.20);border-radius:100px;padding:5px 14px">SEC</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#00C9A7;
+      background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.20);border-radius:100px;padding:5px 14px">MAS</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#00C9A7;
+      background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.20);border-radius:100px;padding:5px 14px">FCA</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#00C9A7;
+      background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.20);border-radius:100px;padding:5px 14px">VARA</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#00C9A7;
+      background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.20);border-radius:100px;padding:5px 14px">FATF</span>
   </div>
 
-  <!-- Gradient divider -->
-  <div style="height:1px;margin:28px auto 0;max-width:400px;
-    background:linear-gradient(90deg,transparent,rgba(0,201,167,0.15),transparent);"></div>
+  <!-- Stat bar — shows scale at a glance -->
+  <div style="display:flex;gap:24px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+    <div style="text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#00C9A7">291</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(232,244,241,0.35);margin-top:2px">Regulations indexed</div>
+    </div>
+    <div style="width:1px;height:36px;background:rgba(0,201,167,0.15)"></div>
+    <div style="text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#00C9A7">5</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(232,244,241,0.35);margin-top:2px">Jurisdictions</div>
+    </div>
+    <div style="width:1px;height:36px;background:rgba(0,201,167,0.15)"></div>
+    <div style="text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#00C9A7">6</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(232,244,241,0.35);margin-top:2px">AI agents</div>
+    </div>
+    <div style="width:1px;height:36px;background:rgba(0,201,167,0.15)"></div>
+    <div style="text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#00C9A7">42</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(232,244,241,0.35);margin-top:2px">Enforcement cases</div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div style="height:1px;margin:32px auto 0;max-width:500px;
+    background:linear-gradient(90deg,transparent,rgba(0,201,167,0.20),transparent)"></div>
 </div>
 """
 
