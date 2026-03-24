@@ -687,10 +687,10 @@ def _fmt(r):
     subs = _sub_scores_html(sc)
     risk_h = f'{gauge}<div style="text-align:center;font-size:15px;margin:10px 0">{glossarise(sent)}</div>{subs}'
 
-    summary = glossarise(r.get("summary", ""))
+    summary = f"## Executive Summary\n\n{glossarise(r.get('summary', ''))}"
 
     fm = {"EU": "\U0001f1ea\U0001f1fa", "US": "\U0001f1fa\U0001f1f8", "SG": "\U0001f1f8\U0001f1ec", "UK": "\U0001f1ec\U0001f1e7", "AE": "\U0001f1e6\U0001f1ea"}
-    jp = []
+    jp = ["## Jurisdiction Analysis\n"]
     for j in r.get("jurisdiction_analysis", []):
         c = j.get("code", "")
         jp.append(f"### {fm.get(c,'')} {j.get('name',c)}\n**Status:** {j.get('status','')}")
@@ -704,7 +704,7 @@ def _fmt(r):
         sec = tc.get("is_security", False)
         sw = "**Yes**" if sec else "**Unlikely**"
         tc_md = glossarise(
-            f"**Is your token a security?** {sw}\n\n"
+            f"## Token Classification\n\n**Is your token a security?** {sw}\n\n"
             f"Howey Test: `{tc.get('us_classification','N/A')}` \u00b7 MiCA: `{tc.get('mica_type','N/A')}`\n\n"
             f"{tc.get('howey_result','')}\n\n"
             f"**Next steps:** Get a legal opinion \u00b7 "
@@ -712,10 +712,10 @@ def _fmt(r):
             f"Prepare MiCA whitepaper if targeting EU"
         )
     else:
-        tc_md = "*Add a token description above to get classification.*"
+        tc_md = ""
 
     aml = r.get("aml_analysis", {})
-    ap = []
+    ap = ["## AML & Identity Verification\n"]
     yes_msg = "**Yes** \u2014 mandatory for your activities."
     no_msg = "Pending."
     ap.append(f"**Do you need KYC/AML?** {yes_msg if aml.get('needed') else no_msg}\n")
@@ -728,7 +728,7 @@ def _fmt(r):
     aml_md = glossarise("\n".join(ap))
 
     lic = r.get("licensing", {})
-    lp = []
+    lp = ["## Licensing Roadmap\n"]
     for l in lic.get("required_licences", []):
         lp.append(
             f"### {l.get('jurisdiction','')} \u2014 {l.get('licence_type','')}\n"
@@ -742,7 +742,7 @@ def _fmt(r):
     lic_md = glossarise("\n".join(lp)) if lp else ""
 
     cs = r.get("enforcement_cases", [])
-    cp = []
+    cp = ["## Relevant Enforcement Cases\n"]
     if cs:
         cp.append("*Businesses similar to yours that faced enforcement:*\n")
     for c in cs[:5]:
@@ -754,7 +754,7 @@ def _fmt(r):
     case_md = glossarise("\n".join(cp)) if cp else ""
 
     acts = r.get("action_plan", [])
-    axp = []
+    axp = ["## Priority Action Plan\n"]
     for tag, title in [("[CRITICAL]", "### This week"), ("[URGENT]", "\n### Next 30 days"), ("[HIGH]", ""), ("[MEDIUM]", "\n### Next 90 days"), ("[LOW]", "")]:
         items = [a for a in acts if tag in a]
         if items and title:
@@ -886,25 +886,21 @@ DEMO_BANNER_HTML = (
 
 with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Compliance Intelligence") as demo:
 
-    # ── HERO with #amb aurora ──
+    # ── HERO ──
     gr.HTML(HERO_HTML)
 
     if DEMO_MODE:
         gr.HTML(DEMO_BANNER_HTML)
 
-    with gr.Accordion("Disclaimer", open=False):
-        gr.Markdown(DISCLAIMER)
-
     # ── INPUT SECTION ──
     gr.HTML(
-        '<div style="margin:20px 0 4px;">'
-        '  <span style="font-family:\'Sora\',sans-serif;font-size:18px;font-weight:600;color:#e8f4f1;">'
-        '    Tell us about your business'
-        '  </span>'
+        '<div style="margin:20px 0 6px;">'
+        '  <div style="font-family:\'Sora\',sans-serif;font-size:20px;font-weight:600;color:#e8f4f1;">'
+        '    Tell us about your business</div>'
+        '  <div style="font-family:\'DM Sans\',sans-serif;font-size:13px;'
+        '    color:rgba(232,244,241,0.35);margin-top:4px;">'
+        '    Describe what you do in plain language \u2014 no legal knowledge needed</div>'
         '</div>'
-        '<div style="font-family:\'DM Sans\',sans-serif;font-size:13px;'
-        'color:rgba(232,244,241,0.35);margin-bottom:18px;">'
-        'Describe what you do in plain language \u2014 no legal knowledge needed</div>'
     )
 
     biz_in = gr.Textbox(
@@ -921,38 +917,57 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Complianc
         value=["European Union", "United States"],
     )
     gr.HTML(
-        '<div style="font-size:11px;color:rgba(232,244,241,0.25);margin-top:-2px;">'
+        '<div style="font-size:11px;color:rgba(232,244,241,0.20);margin-top:-2px;">'
         'Not sure? Select all \u2014 we\u2019ll tell you which apply.</div>'
     )
     act_in = gr.CheckboxGroup(label="What will your business do?", choices=ACTIVITY_CHOICES)
 
+    # ── CTA BUTTON — solid teal, unmissable ──
+    gr.HTML('<div style="height:8px"></div>')
     btn = gr.Button("Analyse my compliance requirements \u2192", variant="primary", size="lg")
+
+    # ── DISCLAIMER — always visible, not hidden in accordion ──
+    gr.HTML(
+        '<div style="margin:20px 0 8px;padding:12px 16px;border-radius:10px;'
+        'background:rgba(0,201,167,0.03);border:1px solid rgba(0,201,167,0.08);'
+        'font-family:\'DM Sans\',sans-serif;font-size:11px;color:rgba(232,244,241,0.35);line-height:1.6;">'
+        'This tool provides general regulatory information only and does not constitute legal advice. '
+        'Always consult qualified legal counsel before making compliance decisions.'
+        '</div>'
+    )
 
     # ── ANALYSIS STATUS ──
     gr.HTML('<div class="sep"></div>')
-    narr = gr.HTML('<span style="color:rgba(232,244,241,0.3);font-size:13px;">&nbsp;</span>')
+    narr = gr.HTML("")
     agents = gr.HTML("")
     pbar = gr.HTML("")
 
-    # ── RESULTS ──
+    # ── RESULTS — all directly visible, no accordions ──
     risk_out = gr.HTML()
 
-    with gr.Accordion("Executive summary", open=False):
-        sum_out = gr.Markdown()
-    with gr.Accordion("Jurisdiction analysis", open=False):
-        jx_out = gr.Markdown()
-    with gr.Accordion("Token classification", open=False):
-        tok_out = gr.Markdown()
-    with gr.Accordion("AML and identity verification", open=False):
-        aml_out = gr.Markdown()
-    with gr.Accordion("Your licensing journey", open=False):
-        lic_out = gr.Markdown()
-    with gr.Accordion("What to do next", open=False):
-        act_out = gr.Markdown()
-    with gr.Accordion("Similar enforcement cases", open=False):
-        case_out = gr.Markdown()
+    gr.HTML('<div id="results-anchor"></div>')
 
-    pdf_out = gr.File(label="PDF Report", visible=True)
+    sum_out = gr.Markdown()
+
+    gr.HTML('<div class="sep"></div>')
+    jx_out = gr.Markdown()
+
+    gr.HTML('<div class="sep"></div>')
+    tok_out = gr.Markdown()
+
+    gr.HTML('<div class="sep"></div>')
+    aml_out = gr.Markdown()
+
+    gr.HTML('<div class="sep"></div>')
+    lic_out = gr.Markdown()
+
+    gr.HTML('<div class="sep"></div>')
+    act_out = gr.Markdown()
+
+    gr.HTML('<div class="sep"></div>')
+    case_out = gr.Markdown()
+
+    pdf_out = gr.File(label="Download PDF Report", visible=True)
 
     with gr.Accordion("Full markdown report", open=False):
         full_out = gr.Markdown()
