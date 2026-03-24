@@ -1026,4 +1026,9 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Complianc
 # LAUNCH
 # ═══════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__" or True:
-    demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
+    is_spaces = os.environ.get("SPACE_ID") is not None
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=7860,
+        share=not is_spaces,  # share=True locally, False on HF Spaces (not needed there)
+    )
