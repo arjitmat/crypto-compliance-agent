@@ -396,18 +396,24 @@ class _CompliancePDF(FPDF):
     def _body_text(self, text: str):
         self.set_font("Helvetica", "", 9)
         self.set_text_color(40, 40, 40)
+        self.set_x(10)
         self.multi_cell(0, 5, self._safe(text))
         self.ln(2)
 
     def _body_bold(self, text: str):
         self.set_font("Helvetica", "B", 9)
         self.set_text_color(40, 40, 40)
+        self.set_x(10)
         self.cell(0, 6, self._safe(text), new_x="LMARGIN", new_y="NEXT")
 
     def _body_bullet(self, text: str):
         self.set_font("Helvetica", "", 9)
         self.set_text_color(40, 40, 40)
-        self.multi_cell(0, 5, self._safe(f"- {text}"))
+        self.set_x(10)  # reset to left margin
+        safe = self._safe(f"- {text}")
+        if len(safe) > 400:
+            safe = safe[:400] + "..."
+        self.multi_cell(0, 5, safe)
 
     def _table_header(self, columns: list[str]):
         self.set_font("Helvetica", "B", 8)

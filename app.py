@@ -19,33 +19,33 @@ import gradio as gr
 # ═══════════════════════════════════════════════════════════════════════════
 COMPLIANCE_GLOSSARY: dict[str, str] = {
     "Howey Test": "A 4-question legal test from a 1946 US court case. If all 4 are YES for your token, the SEC may treat it as a security.",
-    "VASP": "Virtual Asset Service Provider \u2014 the legal term for crypto businesses. If you run one, you must follow AML rules.",
-    "CASP": "Crypto-Asset Service Provider \u2014 the EU\u2019s term for crypto businesses under MiCA.",
+    "VASP": "Virtual Asset Service Provider — the legal term for crypto businesses. If you run one, you must follow AML rules.",
+    "CASP": "Crypto-Asset Service Provider — the EU's term for crypto businesses under MiCA.",
     "Travel Rule": "Requires crypto businesses to share sender and receiver details for transfers above a certain amount.",
-    "AML": "Anti-Money Laundering \u2014 laws requiring businesses to check users aren\u2019t hiding criminal money.",
-    "KYC": "Know Your Customer \u2014 verifying who your users are by checking ID and address.",
-    "EMT": "E-Money Token \u2014 under MiCA, a stablecoin pegged to one currency like EUR. Strict rules apply.",
-    "ART": "Asset-Referenced Token \u2014 under MiCA, a stablecoin backed by multiple assets. Most regulated crypto in the EU.",
-    "MiCA": "Markets in Crypto-Assets Regulation \u2014 the EU\u2019s main crypto law, fully in force from December 2024.",
-    "FinCEN": "Financial Crimes Enforcement Network \u2014 US Treasury agency regulating crypto money service businesses.",
-    "MSB": "Money Services Business \u2014 the US category for crypto exchanges. Must register with FinCEN.",
-    "MPI Licence": "Major Payment Institution Licence \u2014 Singapore\u2019s main licence for larger crypto businesses.",
-    "DTSP": "Digital Token Service Provider \u2014 new Singapore category (June 2025) for crypto firms serving international clients.",
-    "VARA": "Virtual Assets Regulatory Authority \u2014 Dubai\u2019s dedicated crypto regulator.",
-    "FCA": "Financial Conduct Authority \u2014 the UK\u2019s financial regulator. Crypto firms must register for AML.",
-    "EDD": "Enhanced Due Diligence \u2014 extra identity checks for high-risk customers like politicians.",
-    "PEP": "Politically Exposed Person \u2014 senior politicians, judges, military officers, or their close associates.",
+    "AML": "Anti-Money Laundering — laws requiring businesses to check users aren't hiding criminal money.",
+    "KYC": "Know Your Customer — verifying who your users are by checking ID and address.",
+    "EMT": "E-Money Token — under MiCA, a stablecoin pegged to one currency like EUR. Strict rules apply.",
+    "ART": "Asset-Referenced Token — under MiCA, a stablecoin backed by multiple assets. Most regulated crypto in the EU.",
+    "MiCA": "Markets in Crypto-Assets Regulation — the EU's main crypto law, fully in force from December 2024.",
+    "FinCEN": "Financial Crimes Enforcement Network — US Treasury agency regulating crypto money service businesses.",
+    "MSB": "Money Services Business — the US category for crypto exchanges. Must register with FinCEN.",
+    "MPI Licence": "Major Payment Institution Licence — Singapore's main licence for larger crypto businesses.",
+    "DTSP": "Digital Token Service Provider — new Singapore category (June 2025) for crypto firms serving international clients.",
+    "VARA": "Virtual Assets Regulatory Authority — Dubai's dedicated crypto regulator.",
+    "FCA": "Financial Conduct Authority — the UK's financial regulator. Crypto firms must register for AML.",
+    "EDD": "Enhanced Due Diligence — extra identity checks for high-risk customers like politicians.",
+    "PEP": "Politically Exposed Person — senior politicians, judges, military officers, or their close associates.",
     "Unhosted Wallet": "A self-controlled crypto wallet (like MetaMask) not held by an exchange.",
     "Whitepaper": "Under MiCA, a legal disclosure document token issuers must publish before launch.",
-    "OFAC": "US Treasury\u2019s sanctions list. Crypto businesses must screen users against it.",
-    "CDD": "Customer Due Diligence \u2014 basic identity checks before opening an account.",
-    "SAR": "Suspicious Activity Report \u2014 filed with the government when a transaction looks criminal.",
-    "STR": "Suspicious Transaction Report \u2014 same as SAR, used in Singapore and UAE.",
-    "BSA": "Bank Secrecy Act \u2014 the main US anti-money laundering law applying to crypto exchanges.",
-    "ESMA": "European Securities and Markets Authority \u2014 maintains the EU CASP register.",
-    "Reg D": "Regulation D \u2014 US exemption to sell security tokens to accredited investors without full SEC registration.",
-    "Reg S": "Regulation S \u2014 US exemption for selling tokens to people outside the United States only.",
-    "FATF": "Financial Action Task Force \u2014 global body setting anti-money laundering standards. 99 countries follow its rules.",
+    "OFAC": "US Treasury's sanctions list. Crypto businesses must screen users against it.",
+    "CDD": "Customer Due Diligence — basic identity checks before opening an account.",
+    "SAR": "Suspicious Activity Report — filed with the government when a transaction looks criminal.",
+    "STR": "Suspicious Transaction Report — same as SAR, used in Singapore and UAE.",
+    "BSA": "Bank Secrecy Act — the main US anti-money laundering law applying to crypto exchanges.",
+    "ESMA": "European Securities and Markets Authority — maintains the EU CASP register.",
+    "Reg D": "Regulation D — US exemption to sell security tokens to accredited investors without full SEC registration.",
+    "Reg S": "Regulation S — US exemption for selling tokens to people outside the United States only.",
+    "FATF": "Financial Action Task Force — global body setting anti-money laundering standards. 99 countries follow its rules.",
     "Passporting": "Under MiCA, one EU licence lets you operate across all 27 member states.",
     "Cold Storage": "Keeping crypto keys offline. Most regulators require 80%+ of customer crypto in cold storage.",
 }
@@ -79,7 +79,7 @@ def glossarise(text: str) -> str:
 FONT_LINK = ""  # empty — fonts loaded via @import in CUSTOM_CSS
 
 # ═══════════════════════════════════════════════════════════════════════════
-# CSS — Deep forest glassmorphism with sage-teal accents
+# CSS — Premium glassmorphism with aurora orbs, grid overlay, noise texture
 # ═══════════════════════════════════════════════════════════════════════════
 CUSTOM_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -98,71 +98,81 @@ h1,h2,h3,.prose h1,.prose h2,.prose h3 { font-family: 'Sora', sans-serif !import
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,201,167,0.25); border-radius: 10px; }
 
-/* ══ AURORA BACKGROUND ═════════════════════════════════════════════════ */
-#aurora { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-#aurora .b1 {
-  position: absolute; top: -15%; right: -10%;
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,201,167,0.07) 0%, transparent 70%);
-  animation: d1 25s ease-in-out infinite;
+/* ══ AMBIENT CONTAINER — 3 aurora orbs + grid + noise ═════════════════ */
+#amb {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  background: #040d12;
 }
-#aurora .b2 {
-  position: absolute; bottom: -10%; left: -8%;
-  width: 550px; height: 550px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,201,167,0.05) 0%, transparent 70%);
-  animation: d2 30s ease-in-out infinite;
+#amb .orb1 {
+  position: absolute; top: -12%; right: -8%;
+  width: 720px; height: 720px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.09) 0%, transparent 68%);
+  animation: orb-drift-1 22s ease-in-out infinite;
 }
-#aurora .b3 {
-  position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%);
-  width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,201,167,0.03) 0%, transparent 70%);
-  animation: d3 35s ease-in-out infinite;
+#amb .orb2 {
+  position: absolute; bottom: -8%; left: -6%;
+  width: 580px; height: 580px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 68%);
+  animation: orb-drift-2 28s ease-in-out infinite;
 }
-@keyframes d1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-80px,50px)} }
-@keyframes d2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-60px)} }
-@keyframes d3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.15)} }
+#amb .orb3 {
+  position: absolute; top: 38%; left: 52%; transform: translate(-50%,-50%);
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.035) 0%, transparent 68%);
+  animation: orb-drift-3 34s ease-in-out infinite;
+}
+@keyframes orb-drift-1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-90px,55px) scale(1.05)} }
+@keyframes orb-drift-2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(55px,-65px) scale(1.08)} }
+@keyframes orb-drift-3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.18)} }
 
-/* ══ MESH GRID OVERLAY (subtle) ════════════════════════════════════════ */
-#grid {
-  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+/* grid overlay */
+#amb .grid {
+  position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(0,201,167,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,201,167,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(0,201,167,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,201,167,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
 }
 
+/* noise texture via inline SVG data URI */
+#amb .noise {
+  position: absolute; inset: 0; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
 /* ══ GLASS PANELS ══════════════════════════════════════════════════════ */
 .glass, .gr-group, .gradio-group {
-  background: rgba(0,201,167,0.03) !important;
-  backdrop-filter: blur(20px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
-  border: 1px solid rgba(0,201,167,0.12) !important;
+  background: rgba(0,201,167,0.025) !important;
+  backdrop-filter: blur(24px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.3) !important;
+  border: 1px solid rgba(0,201,167,0.10) !important;
   border-radius: 16px !important;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 .glass:hover, .gr-group:hover {
-  border-color: rgba(0,201,167,0.25) !important;
-  box-shadow: 0 8px 40px rgba(0,201,167,0.08), inset 0 1px 0 rgba(0,201,167,0.06) !important;
+  border-color: rgba(0,201,167,0.22) !important;
+  box-shadow: 0 8px 48px rgba(0,201,167,0.07), inset 0 1px 0 rgba(0,201,167,0.08) !important;
 }
 
 /* ══ INPUTS ════════════════════════════════════════════════════════════ */
 .gr-panel, .gr-box, .gr-form { background: transparent !important; border: none !important; }
 textarea, input[type="text"], .gr-textbox textarea {
-  background: rgba(4,13,18,0.8) !important;
-  border: 1px solid rgba(0,201,167,0.12) !important;
+  background: rgba(4,13,18,0.85) !important;
+  border: 1px solid rgba(0,201,167,0.10) !important;
   border-radius: 12px !important;
   color: #e8f4f1 !important;
   font-family: 'DM Sans', sans-serif !important;
   font-size: 14px !important;
   padding: 14px 16px !important;
   line-height: 1.65 !important;
-  transition: all 0.25s ease !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 textarea:focus, input[type="text"]:focus {
   border-color: #00C9A7 !important;
-  box-shadow: 0 0 0 3px rgba(0,201,167,0.08), 0 0 20px rgba(0,201,167,0.05) !important;
+  box-shadow: 0 0 0 3px rgba(0,201,167,0.08), 0 0 24px rgba(0,201,167,0.06) !important;
   outline: none !important;
 }
 textarea::placeholder { color: rgba(232,244,241,0.2) !important; }
@@ -177,39 +187,39 @@ label, .gr-label, span.svelte-1gfkn6j {
   text-transform: uppercase !important;
 }
 
-/* ══ CHECKBOX PILLS ════════════════════════════════════════════════════ */
+/* ══ CHECKBOX PILLS — native checkbox hidden, pill with glow ═════════ */
 .gr-check-radio, .gr-checkbox-group { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
 .gr-check-radio input[type="checkbox"], .gr-checkbox-group input[type="checkbox"] { display: none !important; }
 .gr-check-radio label, .gr-checkbox-group label {
-  background: rgba(4,13,18,0.6) !important;
-  border: 1px solid rgba(0,201,167,0.12) !important;
+  background: rgba(4,13,18,0.85) !important;
+  border: 1px solid rgba(0,201,167,0.10) !important;
   border-radius: 100px !important;
   padding: 8px 18px !important;
   cursor: pointer !important;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   font-family: 'DM Sans', sans-serif !important;
   font-size: 13px !important;
   font-weight: 400 !important;
-  color: rgba(232,244,241,0.6) !important;
+  color: rgba(232,244,241,0.55) !important;
   text-transform: none !important;
   letter-spacing: 0 !important;
 }
 .gr-check-radio label:hover, .gr-checkbox-group label:hover {
-  border-color: rgba(0,201,167,0.3) !important;
-  background: rgba(0,201,167,0.06) !important;
+  border-color: rgba(0,201,167,0.28) !important;
+  background: rgba(0,201,167,0.05) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,201,167,0.06);
+  box-shadow: 0 4px 14px rgba(0,201,167,0.06);
 }
 .gr-check-radio label:has(input:checked), .gr-checkbox-group label:has(input:checked) {
-  background: rgba(0,201,167,0.12) !important;
+  background: rgba(0,201,167,0.10) !important;
   border-color: #00C9A7 !important;
   color: #00C9A7 !important;
-  box-shadow: 0 0 16px rgba(0,201,167,0.12), inset 0 1px 0 rgba(0,201,167,0.08);
+  box-shadow: 0 0 18px rgba(0,201,167,0.14), inset 0 1px 0 rgba(0,201,167,0.10) !important;
 }
 
-/* ══ PRIMARY BUTTON ════════════════════════════════════════════════════ */
+/* ══ PRIMARY BUTTON — outlined CTA with glow on hover ════════════════ */
 .gr-button-primary {
-  background: rgba(0,201,167,0.08) !important;
+  background: rgba(0,201,167,0.06) !important;
   border: 1px solid rgba(0,201,167,0.35) !important;
   color: #00C9A7 !important;
   font-family: 'DM Sans', sans-serif !important;
@@ -218,13 +228,13 @@ label, .gr-label, span.svelte-1gfkn6j {
   border-radius: 12px !important;
   padding: 16px 32px !important;
   letter-spacing: 0.3px !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
 }
 .gr-button-primary:hover {
-  background: rgba(0,201,167,0.15) !important;
+  background: rgba(0,201,167,0.14) !important;
   border-color: #00C9A7 !important;
-  box-shadow: 0 0 30px rgba(0,201,167,0.15), 0 4px 20px rgba(0,201,167,0.10) !important;
+  box-shadow: 0 0 36px rgba(0,201,167,0.18), 0 4px 24px rgba(0,201,167,0.12) !important;
   transform: translateY(-2px) !important;
 }
 .gr-button-primary:active { transform: translateY(0) !important; box-shadow: none !important; }
@@ -236,11 +246,11 @@ label, .gr-label, span.svelte-1gfkn6j {
   border-radius: 14px !important;
   margin-bottom: 8px !important;
   overflow: hidden;
-  transition: all 0.3s ease !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 .gr-accordion:hover {
   border-color: rgba(0,201,167,0.18) !important;
-  box-shadow: 0 4px 20px rgba(0,201,167,0.04) !important;
+  box-shadow: 0 4px 24px rgba(0,201,167,0.04) !important;
 }
 .gr-accordion > .label-wrap, .gr-accordion .label-wrap {
   font-family: 'DM Sans', sans-serif !important;
@@ -267,20 +277,26 @@ label, .gr-label, span.svelte-1gfkn6j {
   border: 1px solid rgba(0,201,167,0.08);
 }
 
-/* ══ TOOLTIPS ══════════════════════════════════════════════════════════ */
+/* ══ TOOLTIPS — fade-up animation ═════════════════════════════════════ */
 .tt { color: #6ee7b0; border-bottom: 1px dotted rgba(0,201,167,0.3); cursor: help; position: relative; }
-.tt:hover::after {
+.tt::after {
   content: attr(data-tip); position: absolute; bottom: calc(100% + 10px); left: 50%;
-  transform: translateX(-50%); background: rgba(4,13,18,0.95);
-  border: 1px solid rgba(0,201,167,0.2); color: #e8f4f1;
+  transform: translateX(-50%) translateY(8px); opacity: 0;
+  background: rgba(4,13,18,0.96);
+  border: 1px solid rgba(0,201,167,0.18); color: #e8f4f1;
   font-size: 12px; font-family: 'DM Sans', sans-serif; line-height: 1.5;
   padding: 12px 16px; border-radius: 12px; width: 280px; z-index: 999;
-  pointer-events: none; box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0,201,167,0.05);
-  backdrop-filter: blur(20px);
+  pointer-events: none; box-shadow: 0 14px 48px rgba(0,0,0,0.55), 0 0 24px rgba(0,201,167,0.06);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), transform 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+.tt:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ══ ANIMATIONS ════════════════════════════════════════════════════════ */
-@keyframes breathe { 0%,100%{opacity:0.7;filter:drop-shadow(0 0 8px rgba(0,201,167,0.2))} 50%{opacity:1;filter:drop-shadow(0 0 16px rgba(0,201,167,0.4))} }
+@keyframes breathe { 0%,100%{opacity:0.7;filter:drop-shadow(0 0 8px rgba(0,201,167,0.2))} 50%{opacity:1;filter:drop-shadow(0 0 18px rgba(0,201,167,0.45))} }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
 @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
@@ -293,9 +309,9 @@ label, .gr-label, span.svelte-1gfkn6j {
 /* ══ AGENT CARDS ═══════════════════════════════════════════════════════ */
 .ag {
   display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;
-  background:rgba(4,13,18,0.6);border:1px solid rgba(0,201,167,0.08);
+  background:rgba(4,13,18,0.7);border:1px solid rgba(0,201,167,0.08);
   margin-bottom:6px;font-family:'DM Sans',sans-serif;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 .ag:hover { border-color:rgba(0,201,167,0.18); background:rgba(0,201,167,0.03); }
 .ag-n{font-weight:500;color:#e8f4f1;min-width:130px;font-size:13px}
@@ -310,8 +326,8 @@ label, .gr-label, span.svelte-1gfkn6j {
   box-shadow:0 0 8px rgba(0,201,167,0.3);
 }
 
-/* ══ DIVIDER ═══════════════════════════════════════════════════════════ */
-.divider{height:1px;margin:32px 0;background:linear-gradient(90deg,transparent 5%,rgba(0,201,167,0.10) 50%,transparent 95%)}
+/* ══ SEPARATOR ═════════════════════════════════════════════════════════ */
+.sep{height:1px;margin:32px 0;background:linear-gradient(90deg,transparent 5%,rgba(0,201,167,0.10) 50%,transparent 95%)}
 
 /* ══ FILE UPLOAD ═══════════════════════════════════════════════════════ */
 .gr-file{background:rgba(4,13,18,0.5)!important;border:1px solid rgba(0,201,167,0.08)!important;border-radius:10px!important;min-height:auto!important;max-height:52px!important}
@@ -757,14 +773,19 @@ def _fmt(r):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# HERO HTML (inline SVG shield + breathing animation)
+# HERO HTML — #amb aurora container + floating shield + brand
 # ═══════════════════════════════════════════════════════════════════════════
 HERO_HTML = """
-<div id="aurora"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
-<div id="grid"></div>
+<div id="amb">
+  <div class="orb1"></div>
+  <div class="orb2"></div>
+  <div class="orb3"></div>
+  <div class="grid"></div>
+  <div class="noise"></div>
+</div>
 <div style="text-align:center;padding:60px 20px 16px;position:relative;z-index:1;">
 
-  <!-- Shield icon with glow -->
+  <!-- Shield icon with gradient fill, breathe + float animation -->
   <div style="margin-bottom:16px;">
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="animation:breathe 3s ease-in-out infinite,float 6s ease-in-out infinite;">
       <defs>
@@ -787,20 +808,26 @@ HERO_HTML = """
     AI-powered regulatory intelligence for crypto businesses
   </div>
 
-  <!-- Framework badges -->
+  <!-- Framework badges as individual glass pills -->
   <div style="display:flex;gap:6px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
     <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">MiCA</span>
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">MiCA</span>
     <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">SEC</span>
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">SEC</span>
     <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">MAS</span>
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">MAS</span>
     <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">FCA</span>
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">FCA</span>
     <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">VARA</span>
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">VARA</span>
     <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(0,201,167,0.4);
-      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;">FATF</span>
+      background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.08);border-radius:100px;padding:4px 12px;
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">FATF</span>
   </div>
 
   <!-- Gradient divider -->
@@ -810,10 +837,10 @@ HERO_HTML = """
 """
 
 DEMO_BANNER_HTML = (
-    '<div style="background:rgba(0,201,167,0.05);border:1px solid rgba(0,201,167,0.12);'
+    '<div style="background:rgba(0,201,167,0.04);border:1px solid rgba(0,201,167,0.10);'
     'border-radius:12px;padding:12px 20px;margin:0 auto 20px;max-width:600px;'
-    'color:rgba(232,244,241,0.6);font-size:13px;font-family:\'DM Sans\',sans-serif;text-align:center;'
-    'backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">'
+    'color:rgba(232,244,241,0.55);font-size:13px;font-family:\'DM Sans\',sans-serif;text-align:center;'
+    'backdrop-filter:blur(24px) saturate(1.3);-webkit-backdrop-filter:blur(24px) saturate(1.3);">'
     '<span style="color:#00C9A7;">Demo mode</span> \u2014 '
     'HF_TOKEN not set. Set it in Space settings for full AI-generated analysis.'
     '</div>'
@@ -825,7 +852,7 @@ DEMO_BANNER_HTML = (
 
 with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Compliance Intelligence") as demo:
 
-    # ── HERO ──
+    # ── HERO with #amb aurora ──
     gr.HTML(HERO_HTML)
 
     if DEMO_MODE:
@@ -868,7 +895,7 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Complianc
     btn = gr.Button("Analyse my compliance requirements \u2192", variant="primary", size="lg")
 
     # ── ANALYSIS STATUS ──
-    gr.HTML('<div class="divider"></div>')
+    gr.HTML('<div class="sep"></div>')
     narr = gr.HTML('<span style="color:rgba(232,244,241,0.3);font-size:13px;">&nbsp;</span>')
     agents = gr.HTML("")
     pbar = gr.HTML("")
@@ -876,7 +903,7 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Complianc
     # ── RESULTS ──
     risk_out = gr.HTML()
 
-    with gr.Accordion("Executive summary", open=True):
+    with gr.Accordion("Executive summary", open=False):
         sum_out = gr.Markdown()
     with gr.Accordion("Jurisdiction analysis", open=False):
         jx_out = gr.Markdown()
@@ -897,7 +924,7 @@ with gr.Blocks(theme=THEME, css=CUSTOM_CSS, title="Aegis \u2014 Crypto Complianc
         full_out = gr.Markdown()
 
     # ── REFERENCE & ABOUT ──
-    gr.HTML('<div class="divider" style="margin-top:40px;"></div>')
+    gr.HTML('<div class="sep" style="margin-top:40px;"></div>')
     with gr.Accordion("Quick reference \u2014 jurisdictions, thresholds, Howey Test", open=False):
         gr.Markdown(QUICK_REF)
     with gr.Accordion("About Aegis", open=False):
