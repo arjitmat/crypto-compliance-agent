@@ -1,7 +1,6 @@
-gradio==4.44.0
-requests==2.31.0
-sentence-transformers==2.7.0
-faiss-cpu==1.8.0
-numpy==1.26.4
-fpdf2==2.7.9
-python-dotenv==1.0.1
+requests>=2.31.0
+sentence-transformers>=2.7.0
+faiss-cpu>=1.8.0
+numpy<2.0.0
+fpdf2>=2.7.9
+python-dotenv>=1.0.1
