@@ -203,7 +203,7 @@ class ComplianceOrchestrator:
     """
 
     def __init__(self):
-        print("[Orchestrator] Initialising CryptoComply compliance system...")
+        print("[Orchestrator] Initialising Aegis compliance system...")
 
         # Load 2025 regulatory updates FIRST (high priority)
         self._updates_2025 = _load_2025_updates()
